@@ -1,0 +1,796 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coursebook MSU — Unit 1</title><style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Playfair+Display:ital,wght@1,500&display=swap');
+:root{--lime:#ecf68c;--black:#151515;--pink:#f98bb4}*{box-sizing:border-box}
+body{margin:0;background:#141414;color:#f8f8f8;font-family:'DM Sans',Arial,sans-serif}button{cursor:pointer;font:inherit}a{color:inherit}
+.shell{max-width:1250px;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;padding:24px 5%;gap:16px}
+.logo{font-family:Oswald;font-weight:700;font-size:25px;line-height:.88;letter-spacing:-1px;text-decoration:none}
+.nav{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.nav a{text-decoration:none;font-size:14px;border:1px solid #666;border-radius:40px;padding:8px 15px}
+main{padding:10px 5% 100px}.eyebrow{color:var(--lime);font-size:12px;letter-spacing:2px}
+h1{font:700 clamp(46px,8vw,90px)/1 Oswald;margin:10px 0 14px}.muted{color:#aaa;line-height:1.7}
+.tabbar{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0;position:sticky;top:0;background:#141414;padding:10px 0;z-index:5}
+.tab{background:#333;color:#fff;border:1px solid #666;padding:10px 15px;border-radius:30px}.tab.active{background:var(--lime);color:#111;border-color:var(--lime)}
+.hero{position:relative;border-radius:14px;overflow:hidden;margin:10px 0 26px}.hero img{width:100%;height:340px;object-fit:cover;display:block}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:26px;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.hero .cap h2{font:700 clamp(32px,5vw,52px)/1 Oswald;margin:6px 0}.hero .cap p{margin:0;color:#ddd;line-height:1.5;max-width:780px}
+.step{display:flex;align-items:center;gap:14px;margin:44px 0 12px}.step b{background:var(--pink);color:#111;border-radius:40px;padding:6px 14px;font-size:13px;letter-spacing:1px}
+.step h3{font:600 30px Oswald;margin:0}
+.panel{background:#252525;border:1px solid #444;border-radius:12px;padding:24px;margin:18px 0}.panel h4{font:600 24px Oswald;margin:0 0 6px}
+.instr{color:#bbb;margin:0 0 16px;line-height:1.5}.gr{color:#f6b6cf;font-size:13px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #383838}
+.row:last-child{border-bottom:0}.row.full{grid-template-columns:1fr}
+select,input[type=text]{width:100%;background:#161616;color:#fff;border:1px solid #666;padding:10px;border-radius:7px;font:inherit}
+.row.ok select,.row.ok input{border-color:#63cf8d;background:#174c2d}.row.bad select,.row.bad input{border-color:#ff7474;background:#5b2222}
+.fix{font-size:13px;color:#ffd0d0;margin-top:5px}.word{font-weight:700}
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}.bank span{background:var(--lime);color:#111;border-radius:30px;padding:5px 12px;font-size:13px;font-weight:700}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}
+.opt{border:1px solid #555;border-radius:7px;background:#1c1c1c;color:#fff;padding:11px;text-align:left}
+.opt.sel{background:var(--lime);color:#111;border-color:var(--lime)}.opt.right{border-color:#63cf8d;background:#174c2d;color:#fff}.opt.wrong{border-color:#ff7474;background:#5b2222;color:#fff}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;align-items:center}
+.action{border:0;border-radius:40px;padding:11px 20px;background:var(--lime);color:#111;font-weight:700}.action.sec{background:#444;color:#fff}
+.score{font-weight:700;color:var(--lime)}
+.discuss li{margin:10px 0;line-height:1.55}
+.passage{background:#fff;color:#202020;border-radius:12px;padding:28px 28px 28px 20px;line-height:1.85;margin:18px 0;font-size:16px}
+.ctx{background:#faf9f4;color:#333;border-left:5px solid var(--pink);padding:14px 18px;border-radius:8px;line-height:1.55;margin:12px 0}
+.pl{display:block;padding-left:2.6em;position:relative;min-height:1.2em}.pl i.n{position:absolute;left:0;width:2em;text-align:right;color:#c0365f;font-size:12px;font-style:normal;top:3px}
+.pl.para{text-indent:1.4em}.pl i.n{text-indent:0}.sec{color:#c0365f;font-weight:800;font-size:14px;margin:0 2px}
+.hl{color:#24308f;font-weight:700;text-decoration:underline;text-decoration-color:#24308f}
+.tq{background:#fff;color:#191919;padding:22px;margin:14px 0;border-radius:12px}.tq .qn{font-weight:700;color:#c0365f;font-size:12px;letter-spacing:1px}
+.tq h5{font-size:18px;line-height:1.5;margin:8px 0 12px}.tq .opt{background:#f5f4f8;color:#191919;border-color:#ddd}.tq .opt.sel{background:#eee9ff;border-color:#5a507f;color:#191919}
+.tq .opt.right{background:#d9f5e3;border-color:#2f9c5c;color:#111}.tq .opt.wrong{background:#fde0e0;border-color:#d64545;color:#111}
+.expl{margin-top:10px;background:#f4f1fb;border-radius:8px;padding:10px 14px;font-size:14px;line-height:1.55;color:#333}
+.search{margin:6px 0 14px}.tablewrap{overflow-x:auto;border-radius:10px;border:1px solid #444}
+table{width:100%;border-collapse:collapse;min-width:640px}th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid #383838;font-size:14px;line-height:1.45}
+th{background:#1d1d1d;color:var(--lime);font-weight:600;font-size:12px;letter-spacing:1px;position:sticky;top:0}
+td.w{font-weight:700;white-space:nowrap}td.p{color:#aaa;font-style:italic;white-space:nowrap}td.g{color:#f6b6cf}td.e{color:#ccc}td.e mark{background:none;color:var(--lime);font-weight:700}
+td.t{color:#888;font-size:12px;white-space:nowrap}
+textarea{width:100%;min-height:260px;background:#181818;color:#fff;border:1px solid #666;border-radius:8px;padding:15px;font:inherit;line-height:1.6}
+.topic{padding:18px;margin:14px 0;background:#303030;border-radius:10px;line-height:1.6;border:2px solid transparent;cursor:pointer}.topic.sel{border-color:var(--lime)}
+.footer{padding:30px 5%;border-top:1px solid #444;color:#aaa;font-size:12px}
+@media(max-width:640px){.row{grid-template-columns:1fr}.opts{grid-template-columns:1fr}.hero img{height:260px}.passage{padding:20px 18px;font-size:15px;line-height:1.75}.pl{display:inline;padding:0;min-height:0}.pl.blank{display:none}.pl.para{text-indent:0}.pl.para::before{content:'';display:block;height:.9em}.pl:first-child::before{height:0}.pl i.n{position:static;display:inline;font-size:10px;margin-right:4px;vertical-align:1px}.pl i.n:empty{display:none}.pl.cont i.n{display:none}.hy{display:none}.step h3{font-size:24px}}
+</style></head><body><div class="shell">
+<header class="top"><a class="logo" href="index.html">MSU<br>CELP.</a><nav class="nav"><a href="index.html">Home</a><a href="index.html#coursebook">All units</a></nav></header>
+<main>
+<div class="eyebrow">COURSEBOOK MSU / UNIT 1</div>
+<h1>READ ABOUT IT.</h1>
+<p class="muted">Τέσσερα κείμενα Reading από το MSU-CELP Practice Test 1. Για κάθε κείμενο: <b>1)</b> ασκήσεις λεξιλογίου πριν το διάβασμα, <b>2)</b> το κείμενο με τις ερωτήσεις εξέτασης, <b>3)</b> ασκήσεις εμπέδωσης και <b>4)</b> λεξιλόγιο-corpus με ελληνική μετάφραση.</p>
+<div class="tabbar" id="tabs"></div>
+<div id="view"></div>
+</main>
+<footer class="footer">KAT'S ENGLISH CLUB · COURSEBOOK MSU · Unit 1 · Practice material based on MSU-CELP Practice Test 1 (Reading & Writing).</footer>
+</div>
+<script>
+/* ---------- helpers ---------- */
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function norm(s){return String(s).toLowerCase().replace(/[’']/g,"'").replace(/\s+/g,' ').trim()}
+
+/* ---------- DATA ---------- */
+const TEXTS=[
+/* ================= TEXT 1 ================= */
+{id:"t1",title:"A New Form of Advertising",img:"assets/reading-advertising.jpg",short:"Advertising",
+context:"Imagine that you are taking a class in Media Studies. This week you are studying advertising in different forms of media. Your instructor brought in this newspaper article to share with the class.",
+lines:[
+"¶A new form of advertising has been born on the internet, and it is called behavioral advertising. Be-",
+"havioral advertising involves the practice of tracking consumers online, to find out personal details such",
+"as if they vote, if they are on a low income or a high income, where they travel, and what they like to",
+"read. This can allow advertisers to target their ads to an individual web user, making their efforts more",
+"effective. §1 However, not everyone is a fan. A powerful alliance of privacy and consumer groups have",
+"likened behavioral advertising to “being followed by an invisible stalker.”",
+"",
+"¶Concern is growing that behavioral advertising may violate users’ privacy. There is a call for the gov-",
+"ernment to allow consumers to “opt in” rather than “opt out” of such advertising models. This means",
+"people will have to give their permission before any data is collected, rather than having data collected",
+"unless they somehow decline permission which is usually how things are done currently. It will also",
+"seek to ensure no data is collected around financial or health matters. The key, many say, is trans-",
+"parency. “An individual’s data belongs to them and before these companies track you all over the inter-",
+"net, they need to be transparent about what they are doing and how they intend to use that",
+"information,” said John Simpson, consumer advocate with the Consumer Watchdog. §2 Indeed, most",
+"users are currently being tracked, often without even realizing, since Yahoo, Microsoft and Google all",
+"already use targeted online advertisements.",
+"¶The *advocates* of behavioral advertising say these fears are unfounded. “The vast majority of what",
+"happens online is truly anonymous and all marketers and publishers are trying to do is deliver an ad that",
+"has some relevancy to the person viewing it at a certain time,” says Mike Zaneis, vice president of pub-",
+"lic policy for the Interactive Advertising Bureau. §3 While Mr. Zaneis agreed more has to be done to",
+"educate consumers about the issue, he also warned that pushing for a blanket “opt in” measure would",
+"be disastrous. “A broad ‘opt in’ would be a *sea change* and it would be a recipe for disaster. It would kill",
+"the goose laying the golden egg; the goose being the internet and the golden egg being the free content",
+"and services that consumers enjoy. With a required ‘opt-in’, that would be diminished,” said Mr. Zaneis.",
+"§4"],
+pre:[
+{type:"match",title:"A. Match the words with their meanings",gr:"Αντιστοίχισε κάθε λέξη με τον ορισμό της.",items:[
+["track","to follow and record someone’s movements or activities"],
+["target","to aim something at a particular person or group"],
+["privacy","the right to keep your personal life and information to yourself"],
+["violate","to break a rule, a law or someone’s rights"],
+["transparency","being open and honest about what you are doing"],
+["advocate","a person who publicly supports an idea or a cause"],
+["unfounded","not based on facts or evidence"],
+["diminish","to become or make something smaller or less"]]},
+{type:"gap",title:"B. Complete the sentences with a word from the box",gr:"Συμπλήρωσε τα κενά με τις λέξεις του πλαισίου.",
+bank:["consumers","permission","concern","anonymous","income","effective","alliance","decline"],items:[
+["Many ___ compare prices online before they buy anything.","consumers"],
+["You need your parents’ ___ to go on the school trip.","permission"],
+["There is growing ___ about how much time teenagers spend online.","concern"],
+["She left an ___ comment, so nobody knows who wrote it.","anonymous"],
+["Families on a low ___ often find it hard to pay their bills.","income"],
+["Regular exercise is an ___ way to reduce stress.","effective"],
+["Several countries formed an ___ to fight climate change.","alliance"],
+["If you don’t want cookies on your browser, you can ___ them.","decline"]]},
+{type:"discuss",title:"C. Talk about it",gr:"Συζήτησε (προφορικά ή γραπτά) χρησιμοποιώντας τις νέες λέξεις.",items:[
+"Do you think it is acceptable for websites to <b>track</b> what you do online? Why / why not?",
+"Have you ever seen an ad that was <b>targeted</b> at you and seemed to “know” your interests? How did it make you feel?",
+"Would you rather <b>opt in</b> or <b>opt out</b> of data collection? Explain.",
+"Is your <b>privacy</b> more important than free content and services on the internet?"]}],
+questions:[
+["What is unique about behavioral advertising?",["It targets ads to individual users.","It takes place on the internet.","It requires web users to opt-in.","It is popular with everyone."],0,"Γραμμή 4: «allow advertisers to target their ads to an individual web user». Αυτό είναι το καινούριο. Το (b) δεν είναι μοναδικό – πολλές διαφημίσεις είναι στο internet."],
+["At this time, under what circumstances is personal data collected?",["It is never collected.","It is collected only when permission is given.","It is collected unless permission is denied.","It is always collected."],2,"Γρ. 10–11: «having data collected unless they somehow decline permission which is usually how things are done currently» → συλλέγονται, εκτός αν αρνηθείς (opt out)."],
+["What kind of information is considered unacceptable to collect?",["information about identity","information about web use","information about health","information about age"],2,"Γρ. 12: «ensure no data is collected around financial or health matters»."],
+["Consumer Watchdog organizations say it is important that companies …",["reveal how they use the information they collect.","only collect information that belongs to them.","collect information anonymously.","stop collecting information altogether."],0,"Γρ. 14: «they need to be transparent about what they are doing and how they intend to use that information» → transparent = reveal."],
+["Why do some say that people don’t need to be worried about behavioral advertising?",["because it is really quite rarely used","because consumers are not yet educated","because users can already opt-in if they want to","because it is anonymous"],3,"Γρ. 18–19: «these fears are unfounded. The vast majority of what happens online is truly anonymous»."],
+["At which point in the passage would the following sentence best fit?<br><i>“The beautiful thing is they don’t have to click on that advert, or pay attention to it or do anything at all.”</i>",["§1","§2","§3","§4"],2,"Η πρόταση συνεχίζει τα λόγια του Mike Zaneis που υπερασπίζεται τη διαφήμιση («deliver an ad that has some relevancy…») → μπαίνει στο §3."],
+["In <b>line 18</b> what is the meaning of the word <i>advocate</i>?",["someone who disagrees with something","someone who supports something","someone who invented something","someone who studies something"],1,"Οι «advocates» λένε ότι οι φόβοι είναι αβάσιμοι, άρα την υποστηρίζουν. advocate = υποστηρικτής."],
+["In <b>line 23</b>, what does the phrase <i>sea change</i> most likely mean?",["a complete and total change","a very successful change","an unexpected change","a change that does not happen on land"],0,"sea change = ριζική, ολοκληρωτική αλλαγή. Ο Zaneis λέει ότι ένα γενικό «opt in» θα άλλαζε τα πάντα."],
+["Mr. Zaneis feels that a required opt-in would make the internet …",["even more costly","stop working altogether","less useful for everyone","far more profitable"],2,"Γρ. 24–25: η δωρεάν πληροφορία και οι υπηρεσίες «would be diminished» → λιγότερο χρήσιμο για όλους."],
+["Which sentence best summarizes the meaning of this passage?",["Behavioral advertising is a new threat facing web users.","Behavioral advertising must be strictly regulated so that it does not cause harm.","Benefits for site owners, advertisers and web users support behavioral advertising.","There are contentious views about the value of behavioral advertising."],3,"Το κείμενο παρουσιάζει και τις δύο πλευρές (privacy groups vs advocates). Οι (a), (b), (c) δίνουν μόνο τη μία πλευρά."]],
+post:[
+{type:"type",title:"D. Word formation",gr:"Γράψε τη σωστή μορφή της λέξης σε κεφαλαία.",items:[
+["Websites should be more ___ about how they use our data. (TRANSPARENCY)",["transparent"]],
+["Behavioral advertising makes ads more ___. (EFFECT)",["effective"]],
+["Some people see tracking as an ___ of privacy. (INVADE)",["invasion"]],
+["Most of what happens online is truly ___. (ANONYMITY)",["anonymous"]],
+["Removing free content would be ___ for the internet. (DISASTER)",["disastrous"]],
+["Most users are tracked without even ___ it. (REAL)",["realizing","realising"]],
+["The ads have little ___ to my interests. (RELEVANT)",["relevance","relevancy"]],
+["Many ___ are worried about their personal data. (CONSUME)",["consumers"]]]},
+{type:"mcq",title:"E. Idioms, collocations & synonyms",gr:"Διάλεξε τη σωστή απάντηση.",items:[
+["“A sea change” is …",["a complete transformation","a small improvement","a change at sea"],0],
+["If something is “a recipe for disaster”, it …",["is a good idea","will probably end very badly","is difficult to cook"],1],
+["“To kill the goose that lays the golden egg” means to …",["destroy the thing that brings you benefits","work very hard for money","make a risky investment"],0],
+["They likened the ads ___ an invisible stalker.",["with","to","as"],1],
+["If you want to receive our newsletter, you have to opt ___.",["in","on","up"],0],
+["A synonym of “unfounded” is …",["groundless","discovered","established"],0],
+["A “blanket” measure is one that …",["keeps you warm","applies to everyone and everything","is temporary"],1]]}],
+vocab:[
+["behavioral advertising","n. phr.","συμπεριφορική (στοχευμένη) διαφήμιση","it is called behavioral advertising"],
+["track","v.","παρακολουθώ, ανιχνεύω (ίχνη)","the practice of tracking consumers online"],
+["consumer","n.","καταναλωτής","tracking consumers online"],
+["personal details","n.","προσωπικά στοιχεία","to find out personal details"],
+["income","n.","εισόδημα","if they are on a low income or a high income"],
+["advertiser","n.","διαφημιστής","allow advertisers to target their ads"],
+["target","v.","στοχεύω, απευθύνομαι σε","target their ads to an individual web user"],
+["effort","n.","προσπάθεια","making their efforts more effective"],
+["effective","adj.","αποτελεσματικός","making their efforts more effective"],
+["alliance","n.","συμμαχία","a powerful alliance of privacy and consumer groups"],
+["privacy","n.","ιδιωτικότητα, ιδιωτική ζωή","privacy and consumer groups"],
+["liken (to)","v.","παρομοιάζω (με)","have likened behavioral advertising to …"],
+["invisible","adj.","αόρατος","being followed by an invisible stalker"],
+["stalker","n.","άτομο που παρακολουθεί κάποιον εμμονικά","being followed by an invisible stalker"],
+["concern","n.","ανησυχία","Concern is growing"],
+["violate","v.","παραβιάζω","may violate users’ privacy"],
+["call (for)","n.","έκκληση, αίτημα (για)","There is a call for the government to …"],
+["opt in / opt out","phr. v.","επιλέγω να συμμετέχω / να εξαιρεθώ","to “opt in” rather than “opt out”"],
+["permission","n.","άδεια, έγκριση","give their permission before any data is collected"],
+["decline","v.","αρνούμαι, απορρίπτω","unless they somehow decline permission"],
+["currently","adv.","επί του παρόντος, σήμερα","how things are done currently"],
+["seek (to)","v.","επιδιώκω","It will also seek to ensure …"],
+["ensure","v.","διασφαλίζω","ensure no data is collected"],
+["financial","adj.","οικονομικός","around financial or health matters"],
+["transparency","n.","διαφάνεια","The key, many say, is transparency"],
+["transparent","adj.","διαφανής, ειλικρινής","they need to be transparent"],
+["intend (to)","v.","σκοπεύω, προτίθεμαι","how they intend to use that information"],
+["consumer advocate","n.","συνήγορος / υπερασπιστής του καταναλωτή","consumer advocate with the Consumer Watchdog"],
+["watchdog","n.","φορέας ελέγχου, «φύλακας»","the Consumer Watchdog"],
+["realize","v.","συνειδητοποιώ, καταλαβαίνω","often without even realizing"],
+["advocate","n.","υποστηρικτής","The advocates of behavioral advertising"],
+["unfounded","adj.","αβάσιμος, αστήρικτος","these fears are unfounded"],
+["the vast majority","n. phr.","η συντριπτική πλειονότητα","The vast majority of what happens online"],
+["anonymous","adj.","ανώνυμος","is truly anonymous"],
+["marketer","n.","στέλεχος μάρκετινγκ","all marketers and publishers"],
+["publisher","n.","εκδότης","marketers and publishers"],
+["relevancy / relevance","n.","συνάφεια, σχετικότητα","an ad that has some relevancy"],
+["public policy","n.","δημόσια πολιτική","vice president of public policy"],
+["educate","v.","εκπαιδεύω, ενημερώνω","educate consumers about the issue"],
+["warn","v.","προειδοποιώ","he also warned that …"],
+["blanket","adj.","γενικός, καθολικός","a blanket “opt in” measure"],
+["measure","n.","μέτρο","a blanket “opt in” measure"],
+["disastrous","adj.","καταστροφικός","would be disastrous"],
+["sea change","n.","ριζική αλλαγή","would be a sea change"],
+["a recipe for disaster","idiom","σίγουρη καταστροφή, «συνταγή για καταστροφή»","it would be a recipe for disaster"],
+["kill the goose that lays the golden egg","idiom","σκοτώνω την κότα με τα χρυσά αυγά","It would kill the goose laying the golden egg"],
+["content","n.","περιεχόμενο","the free content and services"],
+["diminish","v.","μειώνω / μειώνομαι","that would be diminished"]]},
+
+/* ================= TEXT 2 ================= */
+{id:"t2",title:"The Melting of Greenland’s Ice",img:"assets/reading-greenland.jpg",short:"Greenland",
+context:"As part of a class at school, you have to write an essay on the effects of global warming. This is one of the articles your teacher has provided as background reading for your assignment. Read it and answer the questions that follow.",
+lines:[
+"¶Greenland isn’t just a huge ice-covered island. It is also a crucial factor in how global warming may re-",
+"shape the world. If all the ice and snow on Greenland were to melt, the oceans would rise 20 feet. Say",
+"goodbye to Miami and big chunks of Florida and Louisiana. Parts of Brooklyn and Manhattan would also",
+"be submerged. Hundreds of millions of people would be displaced in Bangladesh.",
+"",
+"¶So how fast is Greenland melting? §1 To figure that out scientists recently began clocking the speed",
+"at which ice sheets are sliding to the sea, and have shown that the speed has increased. They already",
+"knew, from observations and calculations, that Greenland’s ice is gradually shrinking simply from melt-",
+"ing. That process is slow; however, if the glaciers are sliding faster to the sea, the loss of ice could be",
+"more rapid. While *poring over* satellite images, researchers noticed that large lakes form on the sur-",
+"face of the glaciers during the summer. Those lakes then suddenly disappear. Do the lakes simply drain",
+"into rivers on the surface? Or, might the water generate enough pressure to crack the 3,000-foot-thick",
+"ice all the way to bedrock, pouring down through the ice? §2",
+"",
+"¶A team led by Sarah Das and Ian Joughin of the University of Washington set out to find the answer.",
+"They flew to an area of glaciers with lakes, and installed an array of instruments. They put sensors in a",
+"lake 2½ miles wide to measure the changes in the amount of water it held. They deployed seismome-",
+"ters to detect rumbles in the ice, and put global-positioning units on the ice to chart its movement. §3",
+"They left the instruments in place when they left the study area, and waited.",
+"",
+"¶It wasn’t a long wait. “The lake drained about 10 days after we were there,” Das says. When they",
+"went back, gathered up the instruments, and began to look at the data, it was clear that the crack the-",
+"ory was correct. The water had rushed down to the bedrock, spread out under the ice, and raised the",
+"huge ice sheet by more than three feet. But there was also a surprise: It happened in a relative flash.",
+"“The entire lake drained in about two hours,” says Das. “It was a much more catastrophic drainage than",
+"we expected.” The volume of water flowing down to bedrock matched the torrent over Niagara Falls.",
+"*That realization led the team to ditch plans to explore other, still-intact lakes aboard a rub-*",
+"*ber boat. “We decided we’d leave the boat in its crate,” laughs Das.*",
+"",
+"¶The data also showed that as the water flowed underneath it, the glacier did indeed speed up, dou-",
+"bling its velocity. §4 That doesn’t mean Greenland’s ice is about to fall into the sea, since the glaciers",
+"move slowly to begin with. But it does mean that the ice will disappear faster than just from melting",
+"alone, cutting the time from thousands of years to hundreds. The survival of the ice sheet now seems a",
+"bit more *tenuous*. So go ahead and buy that beachfront property, but don’t expect it to still be above",
+"water for many generations to come."],
+pre:[
+{type:"match",title:"A. Match the words with their meanings",gr:"Αντιστοίχισε κάθε λέξη με τον ορισμό της.",items:[
+["crucial","extremely important"],
+["submerged","completely under water"],
+["shrink","to become smaller"],
+["glacier","a huge mass of ice that moves slowly over land"],
+["bedrock","the solid rock under the soil and the ice"],
+["deploy","to put equipment or people in position, ready to be used"],
+["intact","complete and not damaged"],
+["tenuous","weak and uncertain"]]},
+{type:"gap",title:"B. Complete the sentences with a word from the box",gr:"Συμπλήρωσε τα κενά με τις λέξεις του πλαισίου.",
+bank:["melt","displaced","surface","pressure","sensors","crack","gradually","generations"],items:[
+["If the temperature rises above 0°C, the snow will begin to ___.","melt"],
+["Thousands of families were ___ by the floods and had to find new homes.","displaced"],
+["Dead leaves were floating on the ___ of the water.","surface"],
+["Students often feel a lot of ___ before exams.","pressure"],
+["Modern cars have ___ that warn you if you are too close to another car.","sensors"],
+["Pouring boiling water into a cold glass can make it ___.","crack"],
+["His English improved ___ over the school year.","gradually"],
+["This house has belonged to our family for three ___.","generations"]]},
+{type:"discuss",title:"C. Talk about it",gr:"Συζήτησε χρησιμοποιώντας τις νέες λέξεις.",items:[
+"What effects of <b>global warming</b> can you already see in your country?",
+"Which cities in the world could be <b>submerged</b> if sea levels rise? What would happen to the people who live there?",
+"Would you buy <b>beachfront property</b> today? Why / why not?",
+"What can ordinary people do to slow down the <b>melting</b> of the ice?"]}],
+questions:[
+["Greenland’s role in global warming …",["is very important","is still debated","is insignificant","has some minor importance"],0,"Γρ. 1: «It is also a crucial factor in how global warming may reshape the world». crucial = πολύ σημαντικός."],
+["Which fact did the scientists know first?",["The ice is sliding more quickly into the sea.","The ice is gradually melting.","The lakes disappear under the ice.","Lakes form on the ice in the summer."],1,"Γρ. 7–9: «They already knew … that Greenland’s ice is gradually shrinking simply from melting». Το «already» δείχνει ότι το ήξεραν πρώτο."],
+["What is the significance of the ice sheets’ rapid movement?",["Researchers can estimate when the ice will melt.","It means the melting will be slower.","It means the melting will be faster.","No one knew the ice moved before."],2,"Γρ. 9–10: «if the glaciers are sliding faster to the sea, the loss of ice could be more rapid»."],
+["The phrase <i>poring over</i> on <b>line 10</b> is closest in meaning to …",["glancing at briefly","examining carefully","disregarding","tidying up"],1,"pore over = μελετώ κάτι πολύ προσεκτικά και με λεπτομέρεια."],
+["What was mysterious about the large lakes on the ice?",["how they formed","where they went","why they lasted so long","how to locate them"],1,"Γρ. 11–13: οι λίμνες «suddenly disappear» και οι επιστήμονες ρωτούν πού πάει το νερό (σε ποτάμια ή κάτω από τον πάγο;)."],
+["What is true about Das and Joughin’s study?",["They did not need to remain at the study site.","Their equipment required maintenance.","It was extremely dangerous.","They had to be very patient to get the results."],0,"Γρ. 19: «They left the instruments in place when they left the study area, and waited». Το (d) είναι λάθος: «It wasn’t a long wait»."],
+["In <b>lines 27 to 28</b> the author writes: <i>That realization led the team to ditch plans to explore other, still-intact lakes aboard a rubber boat. “We decided we’d leave the boat in its crate,” laughs Das.</i> The author is implying that …",["their boat was damaged when the lake drained","it was no longer necessary to explore because the answer was found","boat exploration suddenly seemed very dangerous","they understood that they needed a different sort of boat"],2,"Η λίμνη άδειασε σε 2 ώρες με όγκο νερού σαν τους καταρράκτες του Νιαγάρα. Μια βάρκα εκεί θα κινδύνευε, γι’ αυτό την άφησαν στο κιβώτιο."],
+["At which point in the passage would the following sentence best fit?<br><i>“Might that cause its movement to speed up?”</i>",["§1","§2","§3","§4"],1,"Στο §2 ακολουθεί μετά την ερώτηση αν το νερό ραγίζει τον πάγο ως το bedrock. Το «that» = το νερό που πέφτει κάτω από τον πάγο. Επίσης συνεχίζει τη σειρά ερωτήσεων."],
+["The word <i>tenuous</i> in <b>line 34</b> is closest in meaning to …",["clear","risky","strong","doubtful"],3,"tenuous = αδύναμος, αβέβαιος. Η επιβίωση του πάγου είναι πλέον πιο αμφίβολη (doubtful)."],
+["What is the author’s view on the melting of Greenland’s ice?",["It will be a serious problem in the future.","It will not effect us for many many generations.","It is not as serious a problem as most people think.","No one knows much about what will happen."],0,"Τελευταία πρόταση: το ακίνητο στην παραλία δεν θα είναι πάνω από το νερό «for many generations to come» → σοβαρό πρόβλημα στο μέλλον."]],
+post:[
+{type:"type",title:"D. Word formation",gr:"Γράψε τη σωστή μορφή της λέξης σε κεφαλαία.",items:[
+["Greenland’s ice is ___ shrinking. (GRADUAL)",["gradually"]],
+["The ___ of the lake took only two hours. (DRAIN)",["drainage"]],
+["Scientists made careful ___ of the ice. (OBSERVE)",["observations"]],
+["Rising seas could cause the ___ of millions of people. (DISPLACE)",["displacement"]],
+["The drainage was much more ___ than expected. (CATASTROPHE)",["catastrophic"]],
+["The ___ of the ice sheet now seems tenuous. (SURVIVE)",["survival"]],
+["GPS units were used to chart the ___ of the ice. (MOVE)",["movement"]],
+["Sensors ___ the changes in the amount of water. (MEASUREMENT)",["measured","measure"]]]},
+{type:"mcq",title:"E. Phrasal verbs, idioms & opposites",gr:"Διάλεξε τη σωστή απάντηση.",items:[
+["“To pore over” a map means to …",["study it in detail","fold it","throw it away"],0],
+["“To ditch plans” means to …",["make plans","abandon plans","dig a hole"],1],
+["“In a flash” means …",["with a camera","very quickly","in the light"],1],
+["Which word does NOT mean “very important”?",["crucial","vital","tenuous"],2],
+["The opposite of “intact” is …",["damaged","complete","whole"],0],
+["“To figure out” something means to …",["draw it","understand / find the answer to it","count it"],1],
+["A “torrent” of water is …",["a small drop","a large, fast flow","a frozen lake"],1]]}],
+vocab:[
+["ice-covered","adj.","καλυμμένος με πάγο","a huge ice-covered island"],
+["crucial","adj.","καθοριστικός, κρίσιμος","a crucial factor"],
+["factor","n.","παράγοντας","a crucial factor in how global warming …"],
+["global warming","n.","υπερθέρμανση του πλανήτη","how global warming may reshape the world"],
+["reshape","v.","αναδιαμορφώνω, αλλάζω τη μορφή","may reshape the world"],
+["melt","v.","λιώνω","If all the ice and snow … were to melt"],
+["chunk","n.","μεγάλο κομμάτι","big chunks of Florida and Louisiana"],
+["submerged","adj.","βυθισμένος, κάτω από το νερό","would also be submerged"],
+["displaced","adj.","εκτοπισμένος","would be displaced in Bangladesh"],
+["figure out","phr. v.","καταλαβαίνω, βρίσκω τη λύση","To figure that out"],
+["clock","v.","χρονομετρώ, μετρώ (ταχύτητα)","began clocking the speed"],
+["ice sheet","n.","παγοκάλυμμα, στρώμα πάγου","ice sheets are sliding to the sea"],
+["slide","v.","γλιστρώ","sliding to the sea"],
+["observation","n.","παρατήρηση","from observations and calculations"],
+["calculation","n.","υπολογισμός","observations and calculations"],
+["gradually","adv.","σταδιακά","is gradually shrinking"],
+["shrink","v.","συρρικνώνομαι, μικραίνω","gradually shrinking"],
+["glacier","n.","παγετώνας","if the glaciers are sliding faster"],
+["rapid","adj.","γρήγορος, ραγδαίος","the loss of ice could be more rapid"],
+["pore over","phr. v.","μελετώ προσεκτικά","While poring over satellite images"],
+["satellite image","n.","δορυφορική εικόνα","poring over satellite images"],
+["surface","n.","επιφάνεια","on the surface of the glaciers"],
+["drain","v.","αδειάζω, αποστραγγίζομαι","Do the lakes simply drain into rivers?"],
+["generate","v.","παράγω, δημιουργώ","generate enough pressure"],
+["pressure","n.","πίεση","enough pressure to crack the ice"],
+["crack","v. / n.","ραγίζω / ρωγμή","to crack the 3,000-foot-thick ice"],
+["bedrock","n.","βραχώδες υπόστρωμα, μητρικό πέτρωμα","all the way to bedrock"],
+["set out (to)","phr. v.","ξεκινώ με σκοπό να","set out to find the answer"],
+["install","v.","εγκαθιστώ","installed an array of instruments"],
+["array","n.","σειρά, συστοιχία","an array of instruments"],
+["sensor","n.","αισθητήρας","They put sensors in a lake"],
+["measure","v.","μετρώ","to measure the changes"],
+["deploy","v.","τοποθετώ, αναπτύσσω (εξοπλισμό)","They deployed seismometers"],
+["seismometer","n.","σεισμόμετρο","deployed seismometers"],
+["detect","v.","ανιχνεύω, εντοπίζω","to detect rumbles in the ice"],
+["rumble","n.","υπόκωφος θόρυβος, βουητό","rumbles in the ice"],
+["chart","v.","καταγράφω, χαρτογραφώ","to chart its movement"],
+["rush","v.","ορμώ, τρέχω βιαστικά","The water had rushed down"],
+["in a flash","idiom","αστραπιαία, σε ελάχιστο χρόνο","It happened in a relative flash"],
+["catastrophic","adj.","καταστροφικός","a much more catastrophic drainage"],
+["drainage","n.","αποστράγγιση","catastrophic drainage"],
+["volume","n.","όγκος","The volume of water"],
+["torrent","n.","χείμαρρος","the torrent over Niagara Falls"],
+["realization","n.","συνειδητοποίηση","That realization led the team …"],
+["ditch","v. (informal)","παρατάω, εγκαταλείπω","to ditch plans"],
+["intact","adj.","άθικτος, ανέπαφος","still-intact lakes"],
+["aboard","prep.","πάνω σε (όχημα, πλοίο)","aboard a rubber boat"],
+["crate","n.","κιβώτιο, καφάσι","leave the boat in its crate"],
+["velocity","n.","ταχύτητα","doubling its velocity"],
+["to begin with","phr.","εξαρχής, καταρχάς","move slowly to begin with"],
+["survival","n.","επιβίωση","The survival of the ice sheet"],
+["tenuous","adj.","αδύναμος, αβέβαιος","seems a bit more tenuous"],
+["beachfront property","n.","ακίνητο πάνω στην παραλία","buy that beachfront property"],
+["generation","n.","γενιά","for many generations to come"]]},
+
+/* ================= TEXT 3 ================= */
+{id:"t3",title:"Apartment Composting",img:"assets/reading-composting.jpg",short:"Composting",
+context:"You are at a friend’s house, flipping through a magazine called ‘Ecological Living’. This article catches your attention because you live in an apartment, so you read it. After reading it, answer the questions that follow.",
+lines:[
+"¶So your home-owning friends are into composting. They are reaping the benefits of rich black soil",
+"that they can use to improve their gardens, and proudly pointing out what they are doing for the envi-",
+"ronment at the same time! Meanwhile you are living in an apartment with no garden, and so have to",
+"put your kitchen scraps in the garbage each week, whether you like it or not. What can you do?",
+"¶The answer is simple; you can compost too. Outdoors or indoors, anyone can make compost. If you",
+"don’t have a garden, a small space in the garage will do, or on the balcony, or even under the kitchen",
+"sink.",
+"¶Apartment dwelling does mean close proximity to others, so you will, of course, want to take special",
+"care not to cause odor, insect or drainage problems that will offend your neighbors. If you do it cor-",
+"rectly, your compost will not smell, attract flies, or otherwise be a nuisance.",
+"¶And once you get started, you will find there are many advantages. Composting your kitchen *scraps*",
+"helps the environment by reducing the amount of garbage you produce thus saving landfill space, and",
+"gives you a supply of clean organic soil to grow your own healthy vegetables and herbs -- and you don’t",
+"need a garden for that either. You can grow them in containers on your balcony or window ledge.",
+"¶For balcony composting, try using a 10-20 gallon metal or plastic garbage can. Punch holes in the",
+"base, sides and lid using a hammer and large nail so that air can circulate. Raise the can on bricks and",
+"place a tray underneath to catch any excess moisture. Line the bottom of the can with a three-inch",
+"layer of finished compost, soil, shredded leaves, newspaper or cardboard; then you can start adding",
+"your organic kitchen scraps such as fruit and veggie peelings, tea leaves and coffee grounds, shredding",
+"the material finely to speed the process. Remember, no meat and no dairy products!",
+"¶By themselves, kitchen scraps are too wet to compost -- the moisture content averages 85%, and",
+"compost should be not more than 65%. So you need dry materials to mix in. §1 This can be straw,",
+"dead leaves, strips of newspaper, cardboard or cartons, or a mixture. You can also use sawdust. Each",
+"time you add kitchen scraps you should also add an equal amount of brown or dry material. This will",
+"counteract any excess moisture problems and provide an efficient carbon/nitrogen ratio.",
+"¶Because your composting bin will be smaller than a regular compost pile, it might suffer from *a lack*",
+"of heat, so, if possible, stand it close to the building wall, or where it will get a few hours of sunshine",
+"every day. §2 Finally, aerate the pile by turning it frequently, and add soil occasionally—the microor-",
+"ganisms in soil are necessary for the decomposition process.",
+"¶Actually it is a good idea to have two containers -- when the first one’s full and processing, you start",
+"filling the second one, and by the time that is full, the compost in the first one is ready for use and can",
+"be emptied out.",
+"¶§3 Empty your bin, and start afresh with a new base, putting back any material from the first batch",
+"which has not properly decomposed. Use the soil for your favorite house plants, or try balcony garden-",
+"ing. Tomatoes, peppers and suchlike grow nicely in pots, and you can savor the unmatched flavor of",
+"your very own homegrown veggies. §4"],
+pre:[
+{type:"match",title:"A. Match the words with their meanings",gr:"Αντιστοίχισε κάθε λέξη με τον ορισμό της.",items:[
+["scraps","small pieces of food that are left over"],
+["nuisance","something that annoys you or causes problems"],
+["odor","a smell, usually an unpleasant one"],
+["landfill","a large area where rubbish is buried under the ground"],
+["moisture","small amounts of water in the air or in a material"],
+["lid","the cover of a box, pot or container"],
+["decompose","to break down naturally; to rot"],
+["savor","to enjoy the taste of something slowly"]]},
+{type:"gap",title:"B. Complete the sentences with a word from the box",gr:"Συμπλήρωσε τα κενά με τις λέξεις του πλαισίου.",
+bank:["soil","attract","herbs","container","excess","layer","batch","proximity"],items:[
+["Tomatoes grow best in rich, dark ___.","soil"],
+["Sweet drinks left open will ___ wasps and flies.","attract"],
+["Basil and mint are my favourite ___ for cooking.","herbs"],
+["Keep the leftover soup in an airtight ___ in the fridge.","container"],
+["Wipe off any ___ water after you wash the floor.","excess"],
+["There was a thin ___ of dust on the old books.","layer"],
+["We baked a second ___ of cookies because the first ones disappeared quickly.","batch"],
+["The hotel’s close ___ to the beach makes it very popular.","proximity"]]},
+{type:"discuss",title:"C. Talk about it",gr:"Συζήτησε χρησιμοποιώντας τις νέες λέξεις.",items:[
+"Do you recycle at home? What do you do with your kitchen <b>scraps</b>?",
+"What problems could composting cause for your <b>neighbors</b> in an apartment building?",
+"Would you like to grow your own vegetables and <b>herbs</b>? What would you grow?",
+"Should local councils make composting compulsory to save <b>landfill</b> space?"]}],
+questions:[
+["One can infer that the author thinks most apartment dwellers …",["are not interested in composting","would find it very difficult to compost correctly","already compost their kitchen scraps","believe that they cannot make compost"],3,"Γρ. 3–5: ζεις σε διαμέρισμα και «have to put your kitchen scraps in the garbage… What can you do? The answer is simple; you can compost too». Ο συγγραφέας υποθέτει ότι νομίζουν πως δεν μπορούν."],
+["What must you take special care about when composting in an apartment?",["how to hide the compost","how not to annoy your neighbors","what sort of foods you can compost in a small space","what you might do with the finished soil"],1,"Γρ. 8–9: «take special care not to cause odor, insect or drainage problems that will offend your neighbors»."],
+["Which of the following is closest in meaning to the word <i>scraps</i> in <b>line 11</b>?",["pieces of paper","unwanted leftovers","ready-made meals","uncooked food"],1,"kitchen scraps = υπολείμματα/αποφάγια κουζίνας, δηλαδή ό,τι περισσεύει και δεν το θέλουμε."],
+["What is NOT mentioned as an advantage of composting?",["Less garbage goes into landfills.","You pay less for garbage disposal.","You can make your own organic soil.","You can grow vegetables with the soil you make."],1,"Γρ. 11–14 αναφέρουν λιγότερα σκουπίδια (landfill), οργανικό χώμα και λαχανικά. Δεν λέει τίποτα για χαμηλότερο κόστος."],
+["What is the first thing you should put inside the can?",["coffee grounds","shredded kitchen scraps","vegetable peelings","finished compost or soil"],3,"Γρ. 17–18: «Line the bottom of the can with a three-inch layer of finished compost, soil…; then you can start adding your organic kitchen scraps»."],
+["Why should you shred your kitchen scraps before composting?",["It lowers the moisture content.","It makes composting faster.","They will have less smell.","You can fit more in your compost bin."],1,"Γρ. 19–20: «shredding the material finely to speed the process»."],
+["What is the ideal moisture content for compost?",["less than 65%","more than 65%","around 85%","it doesn’t really matter"],0,"Γρ. 22: «compost should be not more than 65%». Το 85% είναι η υγρασία των scraps."],
+["Which of the following is closest in meaning to the phrase <i>a lack</i> in <b>line 26</b>?",["an abundance","a supply","a loss","a deficiency"],3,"a lack of heat = έλλειψη θερμότητας → deficiency. (abundance = αφθονία, το αντίθετο)."],
+["At which of the highlighted, numbered points in the text should the following sentence be inserted?<br><i>“All being well, you will have soil to harvest in four to six months.”</i>",["§1","§2","§3","§4"],2,"Η προηγούμενη παράγραφος λέει ότι το κομπόστ στο πρώτο δοχείο «is ready for use and can be emptied out». Η πρόταση για τη συγκομιδή σε 4–6 μήνες ταιριάζει ακριβώς πριν το «Empty your bin…» → §3."],
+["One can infer from the passage that …",["composting is always challenging, wherever you live.","composting is worthwhile for apartment dwellers.","composting requires a great deal of patience.","composting can be quite smelly."],1,"Ο συγγραφέας λέει ότι «anyone can make compost» και ότι «there are many advantages», άρα αξίζει τον κόπο. Το (d) είναι λάθος: «your compost will not smell»."]],
+post:[
+{type:"type",title:"D. Word formation",gr:"Γράψε τη σωστή μορφή της λέξης σε κεφαλαία.",items:[
+["The ___ of organic material takes several months. (DECOMPOSE)",["decomposition"]],
+["Apartment ___ often don’t have gardens. (DWELL)",["dwellers"]],
+["Make sure that air can ___ freely inside the bin. (CIRCULATION)",["circulate"]],
+["Turn the pile frequently to ___ it. (AIR)",["aerate"]],
+["Homegrown vegetables have an ___ flavor. (MATCH)",["unmatched"]],
+["Composting is good for the ___. (ENVIRON)",["environment"]],
+["Too much ___ can ruin your compost. (MOIST)",["moisture"]],
+["Add an ___ amount of dry material each time. (EQUALITY)",["equal"]]]},
+{type:"mcq",title:"E. Collocations & meaning",gr:"Διάλεξε τη σωστή απάντηση.",items:[
+["“To reap the benefits” means to …",["enjoy the good results of something you did","cut the crops","lose your advantages"],0],
+["“To start afresh” means to …",["start again from the beginning","buy fresh food","stop completely"],0],
+["Which is NOT a dairy product?",["cheese","yogurt","eggs"],2],
+["A synonym of “a nuisance” is …",["an annoyance","a neighbour","a novelty"],0],
+["“To counteract” a problem means to …",["make it worse","reduce its effect by doing the opposite","ignore it"],1],
+["Which of these is a dry, “brown” material?",["fruit peelings","sawdust","tea leaves"],1],
+["“Tomatoes, peppers and suchlike” means tomatoes, peppers and …",["things of that kind","nothing else","things people like"],0]]}],
+vocab:[
+["home-owning","adj.","ιδιοκτήτης σπιτιού","your home-owning friends"],
+["be into","phr. v.","μου αρέσει, ασχολούμαι με","are into composting"],
+["composting","n.","κομποστοποίηση","are into composting"],
+["compost","n. / v.","κομπόστ, λίπασμα / κομποστοποιώ","you can compost too"],
+["reap the benefits","phr.","δρέπω τους καρπούς / τα οφέλη","They are reaping the benefits"],
+["soil","n.","χώμα","rich black soil"],
+["proudly","adv.","περήφανα","proudly pointing out"],
+["point out","phr. v.","επισημαίνω","pointing out what they are doing"],
+["meanwhile","adv.","στο μεταξύ","Meanwhile you are living in an apartment"],
+["scraps","n.","υπολείμματα, αποφάγια","your kitchen scraps"],
+["garbage","n.","σκουπίδια","put your kitchen scraps in the garbage"],
+["whether you like it or not","phr.","είτε σου αρέσει είτε όχι","whether you like it or not"],
+["outdoors / indoors","adv.","σε εξωτερικό / εσωτερικό χώρο","Outdoors or indoors"],
+["will do","phr.","αρκεί, κάνει τη δουλειά","a small space in the garage will do"],
+["sink","n.","νεροχύτης","under the kitchen sink"],
+["dwelling","n.","κατοίκηση, κατοικία","Apartment dwelling"],
+["dweller","n.","κάτοικος","apartment dwellers"],
+["proximity","n.","εγγύτητα","close proximity to others"],
+["take care (not) to","phr.","προσέχω (να μην)","take special care not to cause odor"],
+["odor","n.","οσμή, δυσοσμία","odor, insect or drainage problems"],
+["drainage","n.","αποχέτευση, αποστράγγιση","drainage problems"],
+["offend","v.","ενοχλώ, προσβάλλω","that will offend your neighbors"],
+["attract","v.","προσελκύω","attract flies"],
+["nuisance","n.","ενόχληση, μπελάς","be a nuisance"],
+["reduce","v.","μειώνω","by reducing the amount of garbage"],
+["thus","adv.","έτσι, συνεπώς","thus saving landfill space"],
+["landfill","n.","χωματερή, ΧΥΤΑ","saving landfill space"],
+["supply","n.","απόθεμα, προμήθεια","a supply of clean organic soil"],
+["organic","adj.","οργανικός, βιολογικός","clean organic soil"],
+["herbs","n.","μυρωδικά, βότανα","vegetables and herbs"],
+["container","n.","δοχείο","grow them in containers"],
+["window ledge","n.","περβάζι","on your balcony or window ledge"],
+["punch holes","phr.","ανοίγω τρύπες","Punch holes in the base"],
+["lid","n.","καπάκι","base, sides and lid"],
+["nail","n.","καρφί","a hammer and large nail"],
+["circulate","v.","κυκλοφορώ","so that air can circulate"],
+["brick","n.","τούβλο","Raise the can on bricks"],
+["tray","n.","δίσκος","place a tray underneath"],
+["excess","adj.","περίσσειος, παραπάνω","any excess moisture"],
+["moisture","n.","υγρασία","excess moisture"],
+["line","v.","επενδύω, στρώνω","Line the bottom of the can"],
+["layer","n.","στρώμα","a three-inch layer"],
+["shredded","adj.","τεμαχισμένος, ψιλοκομμένος","shredded leaves"],
+["cardboard","n.","χαρτόνι","newspaper or cardboard"],
+["peelings","n.","φλούδες","fruit and veggie peelings"],
+["coffee grounds","n.","κατακάθι του καφέ","tea leaves and coffee grounds"],
+["finely","adv.","ψιλά","shredding the material finely"],
+["dairy products","n.","γαλακτοκομικά προϊόντα","no meat and no dairy products"],
+["average","v.","κυμαίνεται κατά μέσο όρο","the moisture content averages 85%"],
+["straw","n.","άχυρο","This can be straw"],
+["carton","n.","χάρτινη συσκευασία","cardboard or cartons"],
+["sawdust","n.","πριονίδι","You can also use sawdust"],
+["counteract","v.","εξουδετερώνω, αντισταθμίζω","This will counteract any excess moisture"],
+["efficient","adj.","αποδοτικός","an efficient carbon/nitrogen ratio"],
+["ratio","n.","αναλογία","carbon/nitrogen ratio"],
+["pile","n.","σωρός","a regular compost pile"],
+["suffer from","phr. v.","υποφέρω από","it might suffer from a lack of heat"],
+["lack","n.","έλλειψη","a lack of heat"],
+["aerate","v.","αερίζω","aerate the pile"],
+["frequently / occasionally","adv.","συχνά / περιστασιακά","turning it frequently … add soil occasionally"],
+["microorganism","n.","μικροοργανισμός","the microorganisms in soil"],
+["decomposition","n.","αποσύνθεση","the decomposition process"],
+["decompose","v.","αποσυντίθεμαι","which has not properly decomposed"],
+["afresh","adv.","από την αρχή","start afresh with a new base"],
+["batch","n.","παρτίδα","the first batch"],
+["and suchlike","phr.","και τα παρόμοια","Tomatoes, peppers and suchlike"],
+["savor","v.","απολαμβάνω (γεύση)","savor the unmatched flavor"],
+["unmatched","adj.","απαράμιλλος, ασύγκριτος","the unmatched flavor"],
+["homegrown","adj.","σπιτικός, από τον δικό σου κήπο","your very own homegrown veggies"]]},
+
+/* ================= TEXT 4 ================= */
+{id:"t4",title:"A Virtual Earth",img:"assets/reading-earth.jpg",short:"Virtual Earth",
+context:"You are an editor for your school newspaper. A student has written an essay on the computer program Google Earth and submitted it for publication in your technology section, and you must decide whether to publish it or not. Read the essay and then answer the questions that follow.",
+lines:[
+"¶Google Earth is a virtual globe, map and geographic information program that is changing the way we",
+"view the world. It displays satellite images, of varying resolution, of the Earth’s surface, allowing users",
+"to visually see things like cities and houses looking perpendicularly down or at an oblique angle, with",
+"perspective. The degree of resolution available is based somewhat on the points of interest and popu-",
+"larity, but most land masses, except for some islands, are covered in at least 15 meters of resolution.",
+"Melbourne, Victoria; Las Vegas, Nevada; and Cambridge, Cambridgeshire include examples of the",
+"highest resolution, at 15 cm.",
+"",
+"¶Google Earth allows users to explore the earth in several different ways. You can search for ad-",
+"dresses for some countries, enter coordinates, or simply use the mouse to browse to a location. Or,",
+"you can fly a plane, since Google Earth also includes a flight simulator. Currently the F-16 Fighting Fal-",
+"con and the Cirrus SR-22 are the only aircraft that can be used. Fly time is not very accelerated, as it",
+"takes the F-16 at highest speed at least 60 minutes to fly from coast-to-coast in the US. The simulator",
+"features the ability to fly to any supported locations in the world. The pilot can choose any location to",
+"start a flight, and can attempt to land a flight on any level surface in the world, including under the",
+"ocean.",
+"",
+"¶Google Earth also has many other features and layers that offer all kinds of information. A high resolu-",
+"tion view of Victoria Crater on Mars is available using the Mars feature on Google Earth. Google Moon",
+"allows users to navigate over the surface of the moon, and Google Sky allows users to view stars and",
+"other celestial bodies. At the other extreme, the Google Ocean feature allows users to zoom far",
+"below the surface of the ocean and view the ocean floor in 3D. Google Street View provides 360°",
+"panoramic street-level views and allows users to view parts of selected cities and their surrounding",
+"metropolitan areas at ground level, and recently, Google added a feature that allows users to monitor",
+"traffic speeds at loops located every 200 yards in real-time, with green indicators used for good traffic",
+"conditions, yellow for slower speeds, and red for poor traffic conditions.",
+"",
+"¶This program seems to be inspired, at least partially, by science fiction. Google Earth interface bears a",
+"noted similarity to the ‘Earth’ program described in Neal Stephenson’s sci-fi classic Snow Crash. Indeed,",
+"a Google Earth co-founder claimed that Google Earth was modeled after Snow Crash, while another",
+"co-founder said it was inspired by the short science education film Powers of Ten. Google Earth was also",
+"at least partly inspired by a Silicon Graphics demo called “From Space to in Your Face” which zoomed",
+"from space into the Swiss Alps then into the Matterhorn.",
+"",
+"¶Google Earth has been criticized by a number of special interest groups, including national officials, as",
+"being an invasion of privacy and even *posing a threat* to national security. The typical argument is that",
+"the software provides information about military or other critical installations that could be used by ter-",
+"rorists. For example, former Indian president APJ Abdul Kalam has expressed concern over the avail-",
+"ability of high-resolution pictures of sensitive locations in India, and Google subsequently agreed to",
+"censor such sites. Operators of the Lucas Heights nuclear reactor in Sydney also asked Google to cen-",
+"sor high resolution pictures of the facility. However, they later withdrew the request. Morocco’s main",
+"Internet provider Maroc Telecom has been blocking Google Earth since August 2006 for undisclosed",
+"reasons.",
+"",
+"¶On the other hand, other people have expressed concern over the willingness of Google to *cripple*",
+"their dataset to cater to special interests, believing that intentionally obscuring any land goes against its",
+"stated goal of letting the user “point and zoom to any place on the planet that you want to explore”."],
+pre:[
+{type:"match",title:"A. Match the words with their meanings",gr:"Αντιστοίχισε κάθε λέξη με τον ορισμό της.",items:[
+["resolution","how clear and detailed an image is"],
+["navigate","to find your way around a place"],
+["monitor","to watch and check something over a period of time"],
+["censor","to remove parts that are considered harmful or secret"],
+["withdraw","to take back something you have said or asked for"],
+["undisclosed","not made public; kept secret"],
+["cripple","to damage something seriously"],
+["obscure","to hide something or make it difficult to see"]]},
+{type:"gap",title:"B. Complete the sentences with a word from the box",gr:"Συμπλήρωσε τα κενά με τις λέξεις του πλαισίου.",
+bank:["features","coordinates","inspired","satellites","criticized","sensitive","aircraft","facility"],items:[
+["The new phone has many useful ___, like face recognition.","features"],
+["The rescue team found the boat using its GPS ___.","coordinates"],
+["The film was ___ by a true story.","inspired"],
+["TV signals are sent around the world by ___.","satellites"],
+["The minister was ___ for not doing enough about pollution.","criticized"],
+["Military bases are ___ locations, so taking photographs is not allowed.","sensitive"],
+["The airport handles more than 500 ___ a day.","aircraft"],
+["The new sports ___ has a swimming pool and a gym.","facility"]]},
+{type:"discuss",title:"C. Talk about it",gr:"Συζήτησε χρησιμοποιώντας τις νέες λέξεις.",items:[
+"Have you ever used Google Earth or Street View? Where did you <b>navigate</b> to?",
+"Should governments be allowed to <b>censor</b> parts of online maps?",
+"Is a free, detailed map of the whole world a benefit or does it <b>pose a threat</b>?",
+"Would you like your house to appear in <b>high resolution</b> on the internet? Why / why not?"]}],
+questions:[
+["According to the first paragraph we can infer that …",["There is no place on earth with resolution less than 15 meters.","There is higher resolution in Europe than in the USA.","Melbourne is a place that many are interested in looking at.","It is difficult to see details when looking at Las Vegas."],2,"Γρ. 4–7: η ανάλυση εξαρτάται από «points of interest and popularity», και η Μελβούρνη έχει την υψηλότερη (15 cm) → πολλοί ενδιαφέρονται να τη δουν."],
+["In what way is the flight simulator particularly unrealistic?",["You may land a plane in impossible places.","You may travel much faster than you could in reality.","You can crash more easily using the simulator.","You may take off and land in mountainous regions."],0,"Γρ. 15–16: «can attempt to land a flight on any level surface in the world, including under the ocean». Το (b) είναι λάθος: «Fly time is not very accelerated»."],
+["What is implied about the kind of information available on Google Earth?",["There is a lot, and it is varied.","It all relates to the geography of earth.","The information is predominantly about urban centers.","Some is more interesting than the other."],0,"Γρ. 18: «many other features and layers that offer all kinds of information» – Άρης, Σελήνη, αστέρια, ωκεανός, κίνηση δρόμων."],
+["Which word in the passage best characterizes the relationship between science fiction and Google Earth?",["similarity","coincidence","education","inspiration"],3,"Γρ. 28: «This program seems to be inspired … by science fiction» και επαναλαμβάνεται το «inspired»."],
+["Which phrase is closest in meaning to the phrase <i>posing a threat</i> in <b>line 36</b>?",["protecting from danger","intimidating","causing danger","pretending to harm"],2,"pose a threat = αποτελώ απειλή / προκαλώ κίνδυνο για την εθνική ασφάλεια."],
+["What is Google Earth’s typical reaction to complaints from governments about security?",["Responsibility is denied.","The governments are reassured of their safety.","An explanation of Google Earth’s goals is offered.","The offending information is removed."],3,"Γρ. 39–40: «Google subsequently agreed to censor such sites» → αφαιρεί τις επίμαχες εικόνες."],
+["For those living in Morocco, which of the following is accurate?",["You can probably not access Google Earth.","You will be considered a terrorist for using Google Earth.","You may use Google Earth, but your country will be missing.","There are no internet facilities."],0,"Γρ. 41–42: ο κύριος πάροχος «Maroc Telecom has been blocking Google Earth since August 2006»."],
+["Which word is closest in meaning to the word <i>to cripple</i> in <b>line 45</b>?",["to lessen","to damage","to complicate","to fine-tune"],1,"cripple = βλάπτω σοβαρά, «ακρωτηριάζω». Κρύβοντας περιοχές, το Google χαλάει το σύνολο δεδομένων του."],
+["What kind of tone does the author adopt in the essay?",["a persuasive tone","a factual tone","a skeptical tone","an enthusiastic tone"],1,"Το κείμενο παρουσιάζει γεγονότα (αριθμούς, ονόματα, ημερομηνίες) και τις δύο πλευρές χωρίς προσωπική άποψη → factual."],
+["Which of the following best characterizes the author’s opinion about Google Earth?",["It is an interesting program that makes a lot of information available.","It was a bad idea and puts some countries at risk.","It is a program with potential although it currently faces serious problems.","Unless you are a scientist, it is a program that probably won’t interest you."],0,"Το μεγαλύτερο μέρος περιγράφει με ενδιαφέρον τις πολλές λειτουργίες και πληροφορίες. Η κριτική αναφέρεται ως άποψη άλλων ομάδων."]],
+post:[
+{type:"type",title:"D. Word formation",gr:"Γράψε τη σωστή μορφή της λέξης σε κεφαλαία.",items:[
+["The program displays images of ___ resolution. (VARY)",["varying"]],
+["Google Earth has been ___ by many groups. (CRITIC)",["criticized","criticised"]],
+["Officials worried about the ___ of high-resolution pictures. (AVAILABLE)",["availability"]],
+["Some say it poses a threat to national ___. (SECURE)",["security"]],
+["Google ___ agreed to censor such sites. (SUBSEQUENT)",["subsequently"]],
+["The site was blocked for ___ reasons. (DISCLOSE)",["undisclosed"]],
+["The interface bears a ___ to the program in Snow Crash. (SIMILAR)",["similarity"]],
+["Intentionally ___ any land goes against its goal. (OBSCURE)",["obscuring"]]]},
+{type:"mcq",title:"E. Phrases & meaning",gr:"Διάλεξε τη σωστή απάντηση.",items:[
+["“To pose a threat” means to …",["take a photo","be dangerous","ask a question"],1],
+["“To cater to” special interests means to …",["provide what they want","cook for them","argue with them"],0],
+["“To bear a similarity to” something means to …",["carry it","resemble it","dislike it"],1],
+["“Subsequently” means …",["before","afterwards","never"],1],
+["The opposite of “withdraw a request” is …",["make a request","refuse a request","forget a request"],0],
+["A “celestial body” is …",["a star or a planet","a human body","a cloud"],0],
+["Looking “perpendicularly down” means looking …",["at an angle","straight down (at 90°)","upwards"],1]]}],
+vocab:[
+["virtual globe","n.","εικονική υδρόγειος","Google Earth is a virtual globe"],
+["geographic","adj.","γεωγραφικός","geographic information program"],
+["display","v.","προβάλλω, εμφανίζω","It displays satellite images"],
+["varying","adj.","ποικίλος, διαφορετικός","of varying resolution"],
+["resolution","n.","ανάλυση (εικόνας)","of varying resolution"],
+["perpendicularly","adv.","κάθετα","looking perpendicularly down"],
+["oblique","adj.","πλάγιος","at an oblique angle"],
+["perspective","n.","προοπτική","with perspective"],
+["degree","n.","βαθμός","The degree of resolution"],
+["somewhat","adv.","κάπως, εν μέρει","based somewhat on the points of interest"],
+["land mass","n.","χερσαία έκταση, ξηρά","most land masses"],
+["coordinates","n.","συντεταγμένες","enter coordinates"],
+["browse","v.","περιηγούμαι, ψάχνω","use the mouse to browse to a location"],
+["flight simulator","n.","προσομοιωτής πτήσης","includes a flight simulator"],
+["aircraft","n.","αεροσκάφος / αεροσκάφη","the only aircraft that can be used"],
+["accelerated","adj.","επιταχυμένος","Fly time is not very accelerated"],
+["feature","n. / v.","λειτουργία, χαρακτηριστικό / διαθέτω","The simulator features the ability to …"],
+["attempt","v.","επιχειρώ, προσπαθώ","can attempt to land a flight"],
+["level surface","n.","επίπεδη επιφάνεια","on any level surface"],
+["layer","n.","επίπεδο (πληροφορίας)","many other features and layers"],
+["crater","n.","κρατήρας","Victoria Crater on Mars"],
+["navigate","v.","πλοηγούμαι","navigate over the surface of the moon"],
+["celestial bodies","n.","ουράνια σώματα","stars and other celestial bodies"],
+["at the other extreme","phr.","στο άλλο άκρο","At the other extreme, the Google Ocean feature …"],
+["zoom","v.","κάνω ζουμ, μεγεθύνω","zoom far below the surface"],
+["panoramic","adj.","πανοραμικός","360° panoramic street-level views"],
+["surrounding","adj.","γύρω, περιβάλλων","their surrounding metropolitan areas"],
+["metropolitan","adj.","μητροπολιτικός","metropolitan areas"],
+["monitor","v.","παρακολουθώ, ελέγχω","monitor traffic speeds"],
+["real-time","adj.","σε πραγματικό χρόνο","in real-time"],
+["indicator","n.","δείκτης, ένδειξη","green indicators"],
+["inspired (by)","adj.","εμπνευσμένος (από)","seems to be inspired … by science fiction"],
+["partially / partly","adv.","εν μέρει","at least partially"],
+["interface","n.","διεπαφή","Google Earth interface"],
+["bear a similarity to","phr.","μοιάζω με","bears a noted similarity to …"],
+["co-founder","n.","συνιδρυτής","a Google Earth co-founder"],
+["claim","v.","ισχυρίζομαι","claimed that Google Earth was modeled after …"],
+["be modeled after","phr.","βασίζομαι σε πρότυπο","was modeled after Snow Crash"],
+["criticize","v.","επικρίνω","has been criticized by …"],
+["special interest groups","n.","ομάδες (ειδικών) συμφερόντων","a number of special interest groups"],
+["official","n.","αξιωματούχος","national officials"],
+["invasion of privacy","n.","παραβίαση της ιδιωτικότητας","an invasion of privacy"],
+["pose a threat (to)","phr.","αποτελώ απειλή (για)","posing a threat to national security"],
+["national security","n.","εθνική ασφάλεια","to national security"],
+["critical installations","n.","κρίσιμες εγκαταστάσεις","military or other critical installations"],
+["availability","n.","διαθεσιμότητα","the availability of high-resolution pictures"],
+["sensitive","adj.","ευαίσθητος, απόρρητος","sensitive locations in India"],
+["subsequently","adv.","στη συνέχεια, κατόπιν","Google subsequently agreed"],
+["censor","v.","λογοκρίνω","agreed to censor such sites"],
+["operator","n.","διαχειριστής","Operators of the Lucas Heights nuclear reactor"],
+["nuclear reactor","n.","πυρηνικός αντιδραστήρας","the Lucas Heights nuclear reactor"],
+["facility","n.","εγκατάσταση","pictures of the facility"],
+["withdraw","v.","αποσύρω","they later withdrew the request"],
+["internet provider","n.","πάροχος internet","Morocco’s main Internet provider"],
+["undisclosed","adj.","αδιευκρίνιστος, μη γνωστοποιημένος","for undisclosed reasons"],
+["willingness","n.","προθυμία","the willingness of Google to …"],
+["cripple","v.","βλάπτω σοβαρά, «ακρωτηριάζω»","to cripple their dataset"],
+["dataset","n.","σύνολο δεδομένων","their dataset"],
+["cater to","phr. v.","ικανοποιώ, εξυπηρετώ","to cater to special interests"],
+["intentionally","adv.","σκόπιμα, εσκεμμένα","intentionally obscuring any land"],
+["obscure","v.","κρύβω, συσκοτίζω","obscuring any land"],
+["go against","phr. v.","αντιβαίνω σε","goes against its stated goal"],
+["stated goal","n.","δηλωμένος στόχος","its stated goal"]]}
+];
+
+const WRITING={
+topics:[
+"The internet has changed our lives in many ways. We can now communicate instantly with friends all over the world, find out information about anything we could imagine, shop at home, or even open a business on the internet. Many people think these changes are good, but others think the internet poses dangers. The people we meet on line may not be who they say they are, the products we buy may not be as advertised, we may not have as much time for our local friends and family and the information we find out could very well be wrong. Which side of this argument do you agree with? Be sure to support your opinion with reasons and explanations.",
+"These days, it is difficult for a family to make ends meet on just one income. As a result, most children have two parents who work, and are cared for by other relatives or spend time in daycare. Is this a satisfactory arrangement for a child or do young children need the full time care of one of their parents? What is your opinion about this issue? Be sure to support your opinion with reasons and explanations."],
+vocab:[
+["Topic 1","privacy, track, pose a threat, anonymous, transparent, consumer, the vast majority, concern, unfounded, invasion of privacy, a recipe for disaster, diminish"],
+["Topic 2","income, make ends meet, crucial, generation, gradually, effective, concern, ensure, intend, supply, take special care, worthwhile"],
+["Linking words","On the one hand… On the other hand · However · Indeed · Meanwhile · Thus · As a result · Subsequently · To begin with · In conclusion"]]
+};
+
+/* ---------- STATE ---------- */
+let current=0; const state={};
+function st(k){return state[k]||(state[k]={ans:{},checked:false})}
+
+/* ---------- RENDER ---------- */
+function tabs(){
+  const names=TEXTS.map((t,i)=>`Text ${i+1} · ${t.short}`).concat(["Writing","Unit Corpus"]);
+  document.getElementById('tabs').innerHTML=names.map((n,i)=>`<button class="tab${i===current?' active':''}" onclick="go(${i})">${n}</button>`).join('');
+}
+function go(i){current=i;tabs();render();window.scrollTo({top:document.getElementById('tabs').offsetTop-4});try{localStorage.setItem('cb-u1-tab',i)}catch(e){}}
+
+function lineHTML(raw,n,prev){
+  if(raw==="") return `<span class="pl blank"><i class="n">${n%2===0?n:''}</i>&nbsp;</span>`;
+  let para=raw.startsWith('¶'); let s=esc(para?raw.slice(1):raw);
+  const cont=/[A-Za-z]-\*?$/.test(prev||'');
+  s=s.replace(/\*([^*]+)\*/g,'<span class="hl">$1</span>').replace(/§(\d)/g,'<span class="sec">§$1</span>');
+  s=s.replace(/([A-Za-z])-(<\/span>)?$/,'$1<span class="hy">-</span>$2');
+  return `<span class="pl${para?' para':''}${cont?' cont':''}"><i class="n">${n%2===0?n:''}</i>${s}</span>${/[A-Za-z]-\*?$/.test(raw)?'':' '}`;
+}
+
+function exHTML(ex,key){
+  const s=st(key); let body='';
+  if(ex.type==='match'){
+    const defs=ex.items.map(x=>x[1]).slice().sort();
+    body=ex.items.map((it,i)=>{const a=s.ans[i]||'';const cls=s.checked?(a===it[1]?'ok':'bad'):'';
+      return `<div class="row ${cls}"><div class="word">${i+1}. ${esc(it[0])}</div><div><select onchange="setA('${key}',${i},this.value)"><option value="">— choose —</option>${defs.map(d=>`<option${a===d?' selected':''}>${esc(d)}</option>`).join('')}</select>${s.checked&&a!==it[1]?`<div class="fix">✔ ${esc(it[1])}</div>`:''}</div></div>`}).join('');
+  } else if(ex.type==='gap'){
+    body=`<div class="bank">${ex.bank.map(b=>`<span>${esc(b)}</span>`).join('')}</div>`+ex.items.map((it,i)=>{const a=s.ans[i]||'';const cls=s.checked?(a===it[1]?'ok':'bad'):'';
+      return `<div class="row ${cls}"><div>${i+1}. ${esc(it[0]).replace('___','<b>_____</b>')}</div><div><select onchange="setA('${key}',${i},this.value)"><option value="">— choose —</option>${ex.bank.map(d=>`<option${a===d?' selected':''}>${esc(d)}</option>`).join('')}</select>${s.checked&&a!==it[1]?`<div class="fix">✔ ${esc(it[1])}</div>`:''}</div></div>`}).join('');
+  } else if(ex.type==='type'){
+    body=ex.items.map((it,i)=>{const a=s.ans[i]||'';const good=it[1].includes(norm(a));const cls=s.checked?(good?'ok':'bad'):'';
+      return `<div class="row ${cls}"><div>${i+1}. ${esc(it[0]).replace('___','<b>_____</b>')}</div><div><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(a)}" oninput="state['${key}'].ans[${i}]=this.value" placeholder="type your answer">${s.checked&&!good?`<div class="fix">✔ ${esc(it[1].join(' / '))}</div>`:''}</div></div>`}).join('');
+  } else if(ex.type==='mcq'){
+    body=ex.items.map((it,i)=>{const a=s.ans[i];
+      return `<div class="row full"><div>${i+1}. ${esc(it[0])}</div><div class="opts">${it[1].map((o,j)=>{let c='';if(s.checked){if(j===it[2])c='right';else if(a===j)c='wrong'}else if(a===j)c='sel';return `<button class="opt ${c}" onclick="pick('${key}',${i},${j})">${String.fromCharCode(97+j)}. ${esc(o)}</button>`}).join('')}</div></div>`}).join('');
+  } else if(ex.type==='discuss'){
+    return `<div class="panel"><h4>${ex.title}</h4><p class="instr gr">${ex.gr}</p><ol class="discuss">${ex.items.map(q=>`<li>${q}</li>`).join('')}</ol></div>`;
+  }
+  return `<div class="panel" id="${key}"><h4>${ex.title}</h4><p class="instr gr">${ex.gr}</p>${body}<div class="actions"><button class="action" onclick="check('${key}')">Check answers</button><button class="action sec" onclick="reset('${key}')">Try again</button>${s.checked?`<span class="score">${score(ex,s)} / ${ex.items.length}</span>`:''}</div></div>`;
+}
+function score(ex,s){return ex.items.filter((it,i)=>{const a=s.ans[i];if(ex.type==='type')return it[1].includes(norm(a||''));if(ex.type==='mcq')return a===it[2];return a===it[1]}).length}
+
+function qsHTML(t,ti){
+  const key='q'+ti, s=st(key), start=81+ti*10;
+  const html=t.questions.map((q,i)=>{const a=s.ans[i];
+    return `<article class="tq"><div class="qn">QUESTION ${start+i}</div><h5>${q[0]}</h5><div class="opts">${q[1].map((o,j)=>{let c='';if(s.checked){if(j===q[2])c='right';else if(a===j)c='wrong'}else if(a===j)c='sel';return `<button class="opt ${c}" onclick="pick('${key}',${i},${j})">${String.fromCharCode(97+j)}. ${esc(o)}</button>`}).join('')}</div>${s.checked?`<div class="expl"><b>${a===q[2]?'✔ Σωστό':'✘ Σωστή απάντηση: '+String.fromCharCode(97+q[2])}</b> — ${q[3]}</div>`:''}</article>`}).join('');
+  const sc=t.questions.filter((q,i)=>s.ans[i]===q[2]).length;
+  return `<div id="${key}">${html}<div class="actions"><button class="action" onclick="check('${key}')">Check answers</button><button class="action sec" onclick="reset('${key}')">Try again</button>${s.checked?`<span class="score">Score: ${sc} / 10</span>`:''}</div></div>`;
+}
+
+function corpusTable(rows,showText,id){
+  return `<input type="text" class="search" placeholder="🔎 Search English or Greek…" oninput="filt('${id}',this.value)"><div class="tablewrap"><table id="${id}"><thead><tr><th>#</th><th>WORD / PHRASE</th><th>PART OF SPEECH</th><th>ΕΛΛΗΝΙΚΑ</th><th>IN THE TEXT</th>${showText?'<th>TEXT</th>':''}</tr></thead><tbody>${rows.map((r,i)=>`<tr><td class="t">${i+1}</td><td class="w">${esc(r[0])}</td><td class="p">${esc(r[1])}</td><td class="g">${esc(r[2])}</td><td class="e">“${esc(r[3])}”</td>${showText?`<td class="t">${esc(r[4])}</td>`:''}</tr>`).join('')}</tbody></table></div>`;
+}
+function filt(id,v){v=norm(v);document.querySelectorAll('#'+id+' tbody tr').forEach(tr=>tr.hidden=v&&!norm(tr.textContent).includes(v))}
+
+function render(){
+  const v=document.getElementById('view');
+  if(current<TEXTS.length){
+    const t=TEXTS[current],ti=current;
+    v.innerHTML=`<div class="hero"><img src="${t.img}" alt="${esc(t.title)}"><div class="cap"><div class="eyebrow">TEXT ${ti+1} · QUESTIONS ${81+ti*10}–${90+ti*10}</div><h2>${esc(t.title)}</h2></div></div>
+    <div class="step"><b>STEP 1</b><h3>BEFORE YOU READ</h3></div><p class="muted">Μάθε τις λέξεις-κλειδιά του κειμένου πριν το διαβάσεις.</p>
+    ${t.pre.map((ex,i)=>exHTML(ex,`pre${ti}_${i}`)).join('')}
+    <div class="step"><b>STEP 2</b><h3>READ & ANSWER</h3></div>
+    <div class="ctx">${esc(t.context)}</div>
+    <div class="passage">${t.lines.map((l,i)=>lineHTML(l,i+1,t.lines[i-1])).join('')}</div>
+    ${qsHTML(t,ti)}
+    <div class="step"><b>STEP 3</b><h3>AFTER YOU READ</h3></div><p class="muted">Εμπέδωσε το λεξιλόγιο του κειμένου.</p>
+    ${t.post.map((ex,i)=>exHTML(ex,`post${ti}_${i}`)).join('')}
+    <div class="step"><b>STEP 4</b><h3>VOCABULARY CORPUS</h3></div><p class="muted">${t.vocab.length} λέξεις και φράσεις από το κείμενο, με ελληνική μετάφραση και το σημείο όπου εμφανίζονται.</p>
+    ${corpusTable(t.vocab,false,'vt'+ti)}
+    <div class="actions" style="margin-top:30px">${ti>0?`<button class="action sec" onclick="go(${ti-1})">← Text ${ti}</button>`:''}<button class="action" onclick="go(${ti+1})">${ti<3?'Next: Text '+(ti+2)+' →':'Next: Writing →'}</button></div>`;
+  } else if(current===TEXTS.length){
+    let saved='';try{saved=localStorage.getItem('cb-u1-essay')||''}catch(e){}
+    v.innerHTML=`<div class="step"><b>WRITING</b><h3>THINK ABOUT IT, WRITE ABOUT IT!</h3></div>
+    <p class="muted">Γράψε μια πρωτότυπη έκθεση 35 λεπτών σε <b>ΕΝΑ</b> από τα δύο θέματα (Contemporary Life). Χρησιμοποίησε όσες περισσότερες λέξεις από το λεξιλόγιο του Unit 1 μπορείς.</p>
+    ${WRITING.topics.map((tp,i)=>`<div class="topic" id="topic${i}" onclick="document.querySelectorAll('.topic').forEach(x=>x.classList.remove('sel'));this.classList.add('sel')"><b style="color:var(--lime)">TOPIC ${i+1}</b><br>${esc(tp)}</div>`).join('')}
+    <div class="panel"><h4>Useful vocabulary from this unit</h4>${WRITING.vocab.map(r=>`<p><b style="color:var(--pink)">${r[0]}:</b> <span class="muted">${esc(r[1])}</span></p>`).join('')}</div>
+    <textarea id="essay" placeholder="Start writing here…" oninput="essay()">${esc(saved)}</textarea>
+    <div class="actions"><span class="score" id="wc">0 words</span><button class="action" onclick="dl()">Download my composition</button><button class="action sec" onclick="timer()">Start 35-minute timer</button><span class="score" id="clock"></span></div>`;
+    essay();
+  } else {
+    const all=[];TEXTS.forEach((t,i)=>t.vocab.forEach(r=>all.push([r[0],r[1],r[2],r[3],'Text '+(i+1)])));
+    all.sort((a,b)=>a[0].localeCompare(b[0]));
+    v.innerHTML=`<div class="step"><b>CORPUS</b><h3>UNIT 1 · ALL VOCABULARY (A–Z)</h3></div><p class="muted">Όλες οι ${all.length} λέξεις και φράσεις των τεσσάρων κειμένων σε αλφαβητική σειρά. Ψάξε στα αγγλικά ή στα ελληνικά.</p>${corpusTable(all,true,'vall')}`;
+  }
+}
+
+/* ---------- ACTIONS ---------- */
+function setA(k,i,v){st(k).ans[i]=v}
+function pick(k,i,j){const s=st(k);if(s.checked)return;s.ans[i]=j;rerender(k)}
+function check(k){st(k).checked=true;rerender(k)}
+function reset(k){state[k]={ans:{},checked:false};rerender(k)}
+function rerender(k){const y=window.scrollY;render();window.scrollTo(0,y)}
+function essay(){const e=document.getElementById('essay');if(!e)return;const t=e.value.trim();document.getElementById('wc').textContent=(t?t.split(/\s+/).length:0)+' words';try{localStorage.setItem('cb-u1-essay',e.value)}catch(x){}}
+function dl(){const t=document.getElementById('essay').value;if(!t.trim()){alert('Write your composition first.');return}const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain'}));a.download='unit1-composition.txt';a.click()}
+let iv;function timer(){clearInterval(iv);const end=Date.now()+35*60000;const u=()=>{const c=document.getElementById('clock');if(!c){clearInterval(iv);return}const x=Math.max(0,Math.ceil((end-Date.now())/1000));c.textContent='⏱ '+Math.floor(x/60)+':'+String(x%60).padStart(2,'0');if(!x){clearInterval(iv);alert('Time is up!')}};u();iv=setInterval(u,1000)}
+
+try{const s=parseInt(localStorage.getItem('cb-u1-tab'));if(s>=0&&s<=TEXTS.length+1)current=s}catch(e){}
+tabs();render();
+</script></body></html>
