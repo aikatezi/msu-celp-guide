@@ -1,0 +1,802 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coursebook MSU — Unit 2</title><style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Playfair+Display:ital,wght@1,500&display=swap');
+:root{--lime:#ecf68c;--black:#151515;--pink:#f98bb4}*{box-sizing:border-box}
+body{margin:0;background:#141414;color:#f8f8f8;font-family:'DM Sans',Arial,sans-serif}button{cursor:pointer;font:inherit}a{color:inherit}
+.shell{max-width:1250px;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;padding:24px 5%;gap:16px}
+.logo{font-family:Oswald;font-weight:700;font-size:25px;line-height:.88;letter-spacing:-1px;text-decoration:none}
+.nav{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.nav a{text-decoration:none;font-size:14px;border:1px solid #666;border-radius:40px;padding:8px 15px}
+main{padding:10px 5% 100px}.eyebrow{color:var(--lime);font-size:12px;letter-spacing:2px}
+h1{font:700 clamp(46px,8vw,90px)/1 Oswald;margin:10px 0 14px}.muted{color:#aaa;line-height:1.7}
+.tabbar{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0;position:sticky;top:0;background:#141414;padding:10px 0;z-index:5}
+.tab{background:#333;color:#fff;border:1px solid #666;padding:10px 15px;border-radius:30px}.tab.active{background:var(--lime);color:#111;border-color:var(--lime)}
+.hero{position:relative;border-radius:14px;overflow:hidden;margin:10px 0 26px}.hero img{width:100%;height:340px;object-fit:cover;display:block}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:26px;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.hero .cap h2{font:700 clamp(32px,5vw,52px)/1 Oswald;margin:6px 0}.hero .cap p{margin:0;color:#ddd;line-height:1.5;max-width:780px}
+.step{display:flex;align-items:center;gap:14px;margin:44px 0 12px}.step b{background:var(--pink);color:#111;border-radius:40px;padding:6px 14px;font-size:13px;letter-spacing:1px}
+.step h3{font:600 30px Oswald;margin:0}
+.panel{background:#252525;border:1px solid #444;border-radius:12px;padding:24px;margin:18px 0}.panel h4{font:600 24px Oswald;margin:0 0 6px}
+.instr{color:#bbb;margin:0 0 16px;line-height:1.5}.gr{color:#f6b6cf;font-size:13px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #383838}
+.row:last-child{border-bottom:0}.row.full{grid-template-columns:1fr}
+select,input[type=text]{width:100%;background:#161616;color:#fff;border:1px solid #666;padding:10px;border-radius:7px;font:inherit}
+.row.ok select,.row.ok input{border-color:#63cf8d;background:#174c2d}.row.bad select,.row.bad input{border-color:#ff7474;background:#5b2222}
+.fix{font-size:13px;color:#ffd0d0;margin-top:5px}.word{font-weight:700}
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}.bank span{background:var(--lime);color:#111;border-radius:30px;padding:5px 12px;font-size:13px;font-weight:700}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}
+.opt{border:1px solid #555;border-radius:7px;background:#1c1c1c;color:#fff;padding:11px;text-align:left}
+.opt.sel{background:var(--lime);color:#111;border-color:var(--lime)}.opt.right{border-color:#63cf8d;background:#174c2d;color:#fff}.opt.wrong{border-color:#ff7474;background:#5b2222;color:#fff}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;align-items:center}
+.action{border:0;border-radius:40px;padding:11px 20px;background:var(--lime);color:#111;font-weight:700}.action.sec{background:#444;color:#fff}
+.score{font-weight:700;color:var(--lime)}
+.discuss li{margin:10px 0;line-height:1.55}
+.passage{background:#fff;color:#202020;border-radius:12px;padding:28px 28px 28px 20px;line-height:1.85;margin:18px 0;font-size:16px}
+.ctx{background:#faf9f4;color:#333;border-left:5px solid var(--pink);padding:14px 18px;border-radius:8px;line-height:1.55;margin:12px 0}
+.pl{display:block;padding-left:2.6em;position:relative;min-height:1.2em}.pl i.n{position:absolute;left:0;width:2em;text-align:right;color:#c0365f;font-size:12px;font-style:normal;top:3px}
+.pl.para{text-indent:1.4em}.pl i.n{text-indent:0}.sec{color:#c0365f;font-weight:800;font-size:14px;margin:0 2px}
+.hl{color:#24308f;font-weight:700;text-decoration:underline;text-decoration-color:#24308f}
+.tq{background:#fff;color:#191919;padding:22px;margin:14px 0;border-radius:12px}.tq .qn{font-weight:700;color:#c0365f;font-size:12px;letter-spacing:1px}
+.tq h5{font-size:18px;line-height:1.5;margin:8px 0 12px}.tq .opt{background:#f5f4f8;color:#191919;border-color:#ddd}.tq .opt.sel{background:#eee9ff;border-color:#5a507f;color:#191919}
+.tq .opt.right{background:#d9f5e3;border-color:#2f9c5c;color:#111}.tq .opt.wrong{background:#fde0e0;border-color:#d64545;color:#111}
+.expl{margin-top:10px;background:#f4f1fb;border-radius:8px;padding:10px 14px;font-size:14px;line-height:1.55;color:#333}
+.search{margin:6px 0 14px}.tablewrap{overflow-x:auto;border-radius:10px;border:1px solid #444}
+table{width:100%;border-collapse:collapse;min-width:640px}th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid #383838;font-size:14px;line-height:1.45}
+th{background:#1d1d1d;color:var(--lime);font-weight:600;font-size:12px;letter-spacing:1px;position:sticky;top:0}
+td.w{font-weight:700;white-space:nowrap}td.p{color:#aaa;font-style:italic;white-space:nowrap}td.g{color:#f6b6cf}td.e{color:#ccc}td.e mark{background:none;color:var(--lime);font-weight:700}
+td.t{color:#888;font-size:12px;white-space:nowrap}
+textarea{width:100%;min-height:260px;background:#181818;color:#fff;border:1px solid #666;border-radius:8px;padding:15px;font:inherit;line-height:1.6}
+.topic{padding:18px;margin:14px 0;background:#303030;border-radius:10px;line-height:1.6;border:2px solid transparent;cursor:pointer}.topic.sel{border-color:var(--lime)}
+.footer{padding:30px 5%;border-top:1px solid #444;color:#aaa;font-size:12px}
+@media(max-width:640px){.row{grid-template-columns:1fr}.opts{grid-template-columns:1fr}.hero img{height:260px}.passage{padding:20px 18px;font-size:15px;line-height:1.75}.pl{display:inline;padding:0;min-height:0}.pl.blank{display:none}.pl.para{text-indent:0}.pl.para::before{content:'';display:block;height:.9em}.pl:first-child::before{height:0}.pl i.n{position:static;display:inline;font-size:10px;margin-right:4px;vertical-align:1px}.pl i.n:empty{display:none}.pl.cont i.n{display:none}.hy{display:none}.step h3{font-size:24px}}
+</style></head><body><div class="shell">
+<header class="top"><a class="logo" href="index.html">MSU<br>CELP.</a><nav class="nav"><a href="index.html">Home</a><a href="index.html#coursebook">All units</a></nav></header>
+<main>
+<div class="eyebrow">COURSEBOOK MSU / UNIT 2</div>
+<h1>MONEY &amp; SOCIETY.</h1>
+<p class="muted">Τέσσερα κείμενα Reading από το MSU-CELP Practice Test 2. Για κάθε κείμενο: <b>1)</b> ασκήσεις λεξιλογίου πριν το διάβασμα, <b>2)</b> το κείμενο με τις ερωτήσεις εξέτασης, <b>3)</b> ασκήσεις εμπέδωσης και <b>4)</b> λεξιλόγιο-corpus με ελληνική μετάφραση.</p>
+<div class="tabbar" id="tabs"></div>
+<div id="view"></div>
+</main>
+<footer class="footer">KAT'S ENGLISH CLUB · COURSEBOOK MSU · Unit 2 · Practice material based on MSU-CELP Practice Test 2 (Reading & Writing).</footer>
+</div>
+<script>
+/* ---------- helpers ---------- */
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function norm(s){return String(s).toLowerCase().replace(/[’']/g,"'").replace(/\s+/g,' ').trim()}
+
+/* ---------- DATA ---------- */
+const TEXTS=[
+/* ================= TEXT 1 ================= */
+{id:"t1",title:"Supply and Demand",img:"assets/u2-supply.jpg",short:"Supply & Demand",
+context:"Imagine that you are taking a class in Economics. This is the introduction to the chapter on supply and demand and the market economy.",
+lines:[
+"¶The relationship between demand and supply underlie the forces behind the allocation of resources",
+"and is perhaps one of the most *fundamental* concepts of economics. In market economy theories, de-",
+"mand and supply theory will allocate resources in the most efficient way possible. How? Let us take a",
+"closer look at the law of demand and the law of supply.",
+"",
+"¶The law of demand states that, if all other factors remain equal, the higher the price of a good, the less",
+"people will demand that good. The amount of a good that buyers purchase at a higher price is less be-",
+"cause as the price of a good goes up, so does the opportunity cost of buying that good. As a result, peo-",
+"ple will naturally avoid buying a product that will force them to *forgo* the consumption of something",
+"else they value more. The higher the price of a good the lower the quantity demanded, and the lower",
+"the price, the more the good will be in demand. §1",
+"¶Like the law of demand, the law of supply demonstrates the quantities that will be sold at a certain",
+"price. But unlike the law of demand, there is a positive relationship between the price and the quantity",
+"supplied. Producers supply more at a higher price because selling a higher quantity at a higher price in-",
+"creases revenue. Unlike the demand relationship, however, the supply relationship is a factor of time.",
+"§2",
+"¶Here is an example. Imagine that a special edition CD of your favorite band is released for $20. Be-",
+"cause the record company’s previous analysis showed that consumers will not demand CDs at a price",
+"higher than $20, only ten CDs were released because it would cost too much to produce more. If, how-",
+"ever, the ten CDs are demanded by 20 people, the price will subsequently rise because, as demand in-",
+"creases, so does the price. Consequently, the rise in price should prompt more CDs to be supplied, in",
+"an attempt to earn more revenue. §3",
+"¶If, however, there are 30 CDs produced and demand is still at 20, the price will not be pushed up be-",
+"cause the supply more than accommodates demand. In fact, after the 20 consumers have been satisfied",
+"with their CD purchases, the price of the leftover CDs may drop as producers attempt to sell the re-",
+"maining ten CDs. §4 The lower price will then make the CD more available to people who had previ-",
+"ously decided that the opportunity cost of buying the CD at $20 was too high."],
+pre:[
+{type:"match",title:"A. Match the words with their meanings",gr:"Αντιστοίχισε κάθε λέξη με τον ορισμό της.",items:[
+["fundamental","basic and very important"],
+["allocate","to give or share out something for a particular purpose"],
+["purchase","to buy something"],
+["forgo","to give up or do without something you would like"],
+["revenue","the money a business receives from selling things"],
+["prompt","to cause something to happen"],
+["accommodate","to provide enough of what is needed"],
+["leftover","remaining after the rest has been used or sold"]]},
+{type:"gap",title:"B. Complete the sentences with a word from the box",gr:"Συμπλήρωσε τα κενά με τις λέξεις του πλαισίου.",
+bank:["demand","resources","released","efficient","supply","consumption","consequently","quantity"],items:[
+["There is a huge ___ for the tickets, so they sold out in minutes.","demand"],
+["Water and oil are important natural ___.","resources"],
+["The band ___ their new album last Friday.","released"],
+["A dishwasher is more ___ than washing by hand: it uses less water.","efficient"],
+["Fresh strawberries are in short ___ in winter, so they are expensive.","supply"],
+["Sugar ___ has increased a lot over the last 50 years.","consumption"],
+["He missed the bus and ___ he was late for school.","consequently"],
+["The bakery orders a large ___ of flour every week.","quantity"]]},
+{type:"discuss",title:"C. Talk about it",gr:"Συζήτησε χρησιμοποιώντας τις νέες λέξεις.",items:[
+"Think of a product that became more expensive recently. Did the <b>demand</b> for it change?",
+"What would you <b>forgo</b> in order to save money for something you value more?",
+"Why do tickets for famous bands become so expensive when the <b>supply</b> is limited?",
+"Do you buy new things immediately or wait until the price <b>drops</b>? Why?"]}],
+questions:[
+["In <b>line 2</b>, what is the meaning of the word <i>fundamental</i>?",["basic","complicated","controversial","theoretical"],0,"fundamental = βασικός, θεμελιώδης. Η προσφορά και η ζήτηση είναι από τις πιο βασικές έννοιες της οικονομίας."],
+["For what kinds of goods should there be the highest demand?",["goods that are high quality","goods that are in limited supply","goods that cost a great deal","goods that have a low cost"],3,"Γρ. 10–11: «the lower the price, the more the good will be in demand»."],
+["In <b>line 9</b>, what is the meaning of the word <i>forgo</i>?",["increase","delay","insist upon","do without"],3,"forgo = παραιτούμαι από κάτι, το στερούμαι. Οι άνθρωποι αποφεύγουν ένα ακριβό προϊόν για να μη χρειαστεί να στερηθούν κάτι που εκτιμούν περισσότερο."],
+["As the price of an item goes up, the quantity supplied will …",["remain constant","go down","go up","change independently"],2,"Γρ. 13–14: «there is a positive relationship between the price and the quantity supplied. Producers supply more at a higher price»."],
+["With which law is time particularly related?",["supply","demand","market consumption","opportunity cost"],0,"Γρ. 15: «Unlike the demand relationship, however, the supply relationship is a factor of time»."],
+["At which point in the passage would the following sentence best fit?<br><i>“This is because suppliers must, but cannot always, react quickly to a change in demand or price.”</i>",["§1","§2","§3","§4"],1,"Η πρόταση εξηγεί γιατί η προσφορά εξαρτάται από τον χρόνο («the supply relationship is a factor of time»), άρα μπαίνει αμέσως μετά, στο §2."],
+["Which of the following best expresses the relationship between supply and demand?",["Both are involved in setting the price of items.","Both explain why consumers buy more.","They both influence price in the same direction.","Supply is far more important than demand."],0,"Στο παράδειγμα με τα CD η τιμή ανεβαίνει ή πέφτει ανάλογα και με τη ζήτηση και με την προσφορά. Το (c) είναι λάθος: η ζήτηση πέφτει όταν ανεβαίνει η τιμή, ενώ η προσφορά ανεβαίνει."],
+["You don’t want to spend 20 dollars for the CD; you might get it cheaper if …",["very few CDs were supplied","the CD is very popular","few people want the CD","others are willing to pay more"],2,"Γρ. 23–26: όταν η προσφορά είναι μεγαλύτερη από τη ζήτηση, «the price of the leftover CDs may drop» → αν λίγοι θέλουν το CD."],
+["What is the likely reason that the author used a CD as an example?",["because CDs are always in demand","because most people can relate to buying a CD","because CDs cost around 20 dollars","because CDs best follow market economy theories"],1,"Ο συγγραφέας θέλει ένα απλό, καθημερινό παράδειγμα που καταλαβαίνουν όλοι («your favorite band»)."],
+["What is the author’s view about market economy?",["The author is suspicious about it.","The author is ignorant.","The author considers it the only option.","The author does not give an opinion."],3,"Είναι εισαγωγή σε κεφάλαιο σχολικού βιβλίου: εξηγεί τη θεωρία ουδέτερα, χωρίς προσωπική άποψη."]],
+post:[
+{type:"type",title:"D. Word formation",gr:"Γράψε τη σωστή μορφή της λέξης σε κεφαλαία.",items:[
+["Supply and demand ___ resources in the most efficient way. (ALLOCATION)",["allocate"]],
+["Online shopping is quick and ___. (EFFICIENCY)",["efficient"]],
+["The price will ___ rise. (SUBSEQUENT)",["subsequently"]],
+["The ___ of a good depends on its price. (CONSUME)",["consumption"]],
+["The law of supply ___ the quantities that will be sold. (DEMONSTRATION)",["demonstrates"]],
+["The company’s previous ___ showed that consumers would not pay more. (ANALYZE)",["analysis"]],
+["___, the rise in price should prompt more CDs to be supplied. (CONSEQUENCE)",["consequently"]],
+["Producers attempt to sell the ___ ten CDs. (REMAIN)",["remaining"]]]},
+{type:"mcq",title:"E. Phrases & meaning",gr:"Διάλεξε τη σωστή απάντηση.",items:[
+["“If all other factors remain equal” means …",["if nothing else changes","if everything is fair","if prices are the same everywhere"],0],
+["“Opportunity cost” is …",["the price written on a product","what you give up when you choose one thing instead of another","the cost of a special offer"],1],
+["As the price of a good goes up, so ___ the opportunity cost.",["is","does","has"],1],
+["“The supply more than accommodates demand” means …",["there is more than enough supply","there is not enough supply","supply and demand are equal"],0],
+["The opposite of “demand rises” is “demand …”",["grows","falls","increases"],1],
+["A synonym of “purchase” is …",["sell","buy","produce"],1],
+["“Leftover CDs” are CDs that …",["have not been sold","are very old","are on the left shelf"],0]]}],
+vocab:[
+["supply","n. / v.","προσφορά / προμηθεύω","The relationship between demand and supply"],
+["demand","n. / v.","ζήτηση / ζητώ","The relationship between demand and supply"],
+["underlie","v.","βρίσκομαι στη βάση (κάποιου πράγματος)","underlie the forces behind …"],
+["allocation","n.","κατανομή","the allocation of resources"],
+["resources","n.","πόροι","the allocation of resources"],
+["fundamental","adj.","θεμελιώδης, βασικός","one of the most fundamental concepts"],
+["concept","n.","έννοια","fundamental concepts of economics"],
+["market economy","n.","οικονομία της αγοράς","In market economy theories"],
+["allocate","v.","κατανέμω","will allocate resources"],
+["efficient","adj.","αποδοτικός","in the most efficient way possible"],
+["take a closer look (at)","phr.","εξετάζω πιο προσεκτικά","Let us take a closer look at …"],
+["law","n.","νόμος","the law of demand"],
+["state","v.","δηλώνω, ορίζω","The law of demand states that …"],
+["factor","n.","παράγοντας","if all other factors remain equal"],
+["remain equal","phr.","παραμένω σταθερός, ίδιος","if all other factors remain equal"],
+["good / goods","n.","αγαθό / αγαθά, προϊόντα","the higher the price of a good"],
+["purchase","v. / n.","αγοράζω / αγορά","buyers purchase at a higher price"],
+["opportunity cost","n.","κόστος ευκαιρίας","so does the opportunity cost"],
+["as a result","phr.","ως αποτέλεσμα","As a result, people will naturally avoid …"],
+["avoid","v.","αποφεύγω","avoid buying a product"],
+["forgo","v.","στερούμαι, παραιτούμαι από","force them to forgo the consumption"],
+["consumption","n.","κατανάλωση","the consumption of something else"],
+["value","v.","εκτιμώ","something else they value more"],
+["quantity","n.","ποσότητα","the lower the quantity demanded"],
+["be in demand","phr.","έχω ζήτηση","the more the good will be in demand"],
+["demonstrate","v.","δείχνω, αποδεικνύω","the law of supply demonstrates the quantities"],
+["positive relationship","n.","θετική (ανάλογη) σχέση","there is a positive relationship"],
+["producer","n.","παραγωγός","Producers supply more"],
+["revenue","n.","έσοδα","increases revenue"],
+["special edition","n.","ειδική έκδοση","a special edition CD"],
+["release","v.","κυκλοφορώ","is released for $20"],
+["record company","n.","δισκογραφική εταιρεία","the record company’s previous analysis"],
+["previous","adj.","προηγούμενος","previous analysis"],
+["analysis","n.","ανάλυση","previous analysis showed …"],
+["subsequently","adv.","στη συνέχεια, επομένως","the price will subsequently rise"],
+["consequently","adv.","κατά συνέπεια","Consequently, the rise in price …"],
+["prompt","v.","προκαλώ, ωθώ","should prompt more CDs to be supplied"],
+["in an attempt to","phr.","σε μια προσπάθεια να","in an attempt to earn more revenue"],
+["earn","v.","κερδίζω (χρήματα)","to earn more revenue"],
+["push up","phr. v.","ανεβάζω (τιμή)","the price will not be pushed up"],
+["accommodate","v.","καλύπτω, ικανοποιώ","the supply more than accommodates demand"],
+["satisfied","adj.","ικανοποιημένος","after the 20 consumers have been satisfied"],
+["leftover","adj.","που περίσσεψε","the leftover CDs"],
+["drop","v.","πέφτω, μειώνομαι","the price … may drop"],
+["remaining","adj.","υπόλοιπος","the remaining ten CDs"],
+["available","adj.","διαθέσιμος, προσιτός","more available to people"],
+["previously","adv.","προηγουμένως","who had previously decided"]]},
+
+/* ================= TEXT 2 ================= */
+{id:"t2",title:"Tribal Governments in the United States",img:"assets/u2-navajo.jpg",short:"Tribal Governments",
+context:"As a requirement for your college degree, you are taking an ethnic studies class. This is one of the articles your teacher has provided as supplemental reading while you are studying Native American culture. Read it and answer the questions that follow.",
+lines:[
+"¶In 1975 the Indian Self-Determination and Education Assistance Act was passed, marking the culmina-",
+"tion of 15 years of policy changes. Related to Indian activism, the Civil Rights Movement and community",
+"development aspects of social programs of the 1960s, the Act recognized the need of Native Americans",
+"for self-determination. There are now 562 federally recognized tribal governments in the United States.",
+"These tribes possess the right to form their own government, to enforce laws both civil and criminal, to",
+"tax, to establish requirements for membership, to license and regulate activities, to zone and to exclude",
+"persons from tribal territories. Limitations on tribal powers of self-government include the same limita-",
+"tions *applicable* to states; for example, neither tribes nor states have the power to make war, engage",
+"in foreign relations, or print money.",
+"",
+"¶As of 2000, the largest tribe in the U.S. by population was the Navajo. §1 The Bureau of Indian Affairs",
+"maintains five Indian Agencies within the Navajo Indian Reservation: Chinle, Eastern, Western, Fort De-",
+"fiance, and Shiprock. These are similar to provincial entities. The smallest political units are the Chapters,",
+"similar to counties, which essentially each consist of a local community. As reorganized in 1991, the Na-",
+"tion’s government has a three-branch system: Executive, Legislative, and Judicial.",
+"",
+"¶Navajo Tribal Council is the legislative branch of the Navajo Nation’s government. It has 88 members",
+"from the 110 chapters that make up the Navajo Nation. The Tribal Council members are delegates",
+"elected every four years by registered Navajo voters. It is presided over by a Speaker who is elected by",
+"the council. §2 The council delegates represent their respective chapters and when council is in ses-",
+"sion; issues pertaining to their chapters are discussed and new legislation is passed.",
+"",
+"¶The Navajo Tribal Council was created in 1936 by the U.S. Secretary of the Interior in order to certify",
+"mineral leases on the Navajo reservation. This first council was headed by Chee Dodge. §3 During its",
+"first meeting, the council gave in to U.S. pressure to grant the oil companies use of the land. In return,",
+"the Navajo Nation was promised more land that could be used for subsistence farming and sheep grazing.",
+"",
+"¶There is no private land ownership within the Navajo Nation - all land is owned in common and ad-",
+"ministered by the Nation’s government. Leases are made both to customary land users (for home sites,",
+"grazing, and other uses) and to religious organizations, and businesses.",
+"",
+"¶The Navajo Nation’s economy includes traditional *endeavors* such as sheep and cattle herding, fiber",
+"production, weaving, jewelry making, and art trading. Newer industries include coal and uranium mining, as",
+"well as sometimes running lucrative casinos. §4 The Navajo government also employs thousands in civil",
+"service and administrative jobs. The unemployment level is high, fluctuating between an overall 40 and",
+"45 percent for the nation, but in some communities it can go as high as 85 percent or as low as 15 percent."],
+pre:[
+{type:"match",title:"A. Match the words with their meanings",gr:"Αντιστοίχισε κάθε λέξη με τον ορισμό της.",items:[
+["culmination","the final result of a long process"],
+["enforce","to make sure that a law is obeyed"],
+["exclude","to keep someone out of a place or a group"],
+["applicable","relevant to or affecting a particular situation"],
+["delegate","a person chosen to represent a group"],
+["pertain to","to be connected with"],
+["lucrative","producing a lot of money"],
+["fluctuate","to change often, going up and down"]]},
+{type:"gap",title:"B. Complete the sentences with a word from the box",gr:"Συμπλήρωσε τα κενά με τις λέξεις του πλαισίου.",
+bank:["regulate","elected","unemployment","tribe","recognized","possess","pressure","territory"],items:[
+["The government wants to ___ the use of mobile phones in schools.","regulate"],
+["She was ___ class president by her classmates.","elected"],
+["Youth ___ is high; many young people can’t find a job.","unemployment"],
+["The Navajo is the largest Native American ___ in the U.S.","tribe"],
+["Her talent was finally ___ when she won the award.","recognized"],
+["Some animals ___ an amazing sense of smell.","possess"],
+["He changed his mind under ___ from his parents.","pressure"],
+["The soldiers were not allowed to enter enemy ___.","territory"]]},
+{type:"discuss",title:"C. Talk about it",gr:"Συζήτησε χρησιμοποιώντας τις νέες λέξεις.",items:[
+"Why is <b>self-determination</b> important for a group of people?",
+"What do you know about Native Americans? Where did you learn it?",
+"Should land be owned <b>in common</b> or by individuals? What are the advantages of each?",
+"Which <b>traditional endeavors</b> (crafts, jobs) still exist in your region?"]}],
+questions:[
+["In <b>lines 4 and 5</b>, the author writes: <i>“In 1975 the Indian Self-Determination and Education Assistance Act was passed, marking the culmination of 15 years of policy changes.”</i> This is referring to …",["the uncertainty people still felt concerning the Act","the joy people felt about the Act","the length of time it took to achieve","the changes it would make in people’s lives"],2,"culmination of 15 years = το τελικό αποτέλεσμα 15 χρόνων αλλαγών → πόσο χρόνο πήρε για να επιτευχθεί."],
+["What do Indian Tribes have a right to do?",["wage war","print money","enforce criminal laws","meet with international leaders"],2,"Γρ. 5: «to enforce laws both civil and criminal». Γρ. 8–9: δεν μπορούν να κάνουν πόλεμο, να έχουν εξωτερικές σχέσεις ή να τυπώνουν χρήμα."],
+["The word <i>applicable</i> in <b>line 8</b> is closest in meaning to …",["relevant","traditional","beneficial","necessary"],0,"applicable = που ισχύει, που αφορά. Οι ίδιοι περιορισμοί που ισχύουν για τις πολιτείες (relevant to states)."],
+["What is unique about the Navajo?",["They are the largest tribe.","They maintain their own government.","They vote for their delegates.","They are part of the US government."],0,"Γρ. 11: «the largest tribe in the U.S. by population was the Navajo». Τα (b) και (c) ισχύουν και για άλλες φυλές (562 αναγνωρισμένες κυβερνήσεις)."],
+["At which point in the passage would the following sentence best fit?<br><i>“The council meets at least four times a year in the capital of the Navajo Nation, Window Rock, Arizona.”</i>",["§1","§2","§3","§4"],1,"Η παράγραφος περιγράφει το Tribal Council. Η πρόταση για το πότε συνεδριάζει ταιριάζει πριν από το «when council is in session» → §2."],
+["At one time, the Navajo let others …",["exploit their natural resources","steal their tribal land","take away their power of government","buy their oil"],0,"Γρ. 25: «the council gave in to U.S. pressure to grant the oil companies use of the land» → άφησαν άλλους να εκμεταλλευτούν τους φυσικούς τους πόρους."],
+["The Navajo Tribal Council was originally created …",["because the U.S. government wanted something","by Chee Dodge","in the 1970’s","so the Navajo could protect themselves from the U.S. government"],0,"Γρ. 23–24: δημιουργήθηκε από τον Υπουργό Εσωτερικών των ΗΠΑ «in order to certify mineral leases» → η κυβέρνηση ήθελε κάτι (τα ορυκτά)."],
+["The author says in <b>lines 28 to 29</b> <i>“There is no private land ownership within the Navajo Nation - all land is owned in common and administered by the Nation’s government.”</i> This implies that …",["it is impossible to start a business","people may use the land that they need","the land is not worth anything","people are wealthy"],1,"Γρ. 29–30: γίνονται μισθώσεις (leases) σε όσους χρειάζονται γη για σπίτια, βοσκή, θρησκευτικούς οργανισμούς και επιχειρήσεις."],
+["The word <i>endeavors</i> in <b>line 32</b> is closest in meaning to …",["employment","ceremonies","practices","attempts"],2,"traditional endeavors = παραδοσιακές δραστηριότητες/ασχολίες (βοσκή, ύφανση, κοσμήματα) → practices."],
+["A high number of Navajo people …",["do not have jobs","work in casinos","do not need to work","are artists"],0,"Γρ. 35–36: «The unemployment level is high, fluctuating between an overall 40 and 45 percent»."]],
+post:[
+{type:"type",title:"D. Word formation",gr:"Γράψε τη σωστή μορφή της λέξης σε κεφαλαία.",items:[
+["The Act recognized the need for self-___. (DETERMINE)",["determination"]],
+["Tribes can set requirements for ___. (MEMBER)",["membership"]],
+["The council is the ___ branch of the government. (LEGISLATION)",["legislative"]],
+["There is no private land ___. (OWN)",["ownership"]],
+["All land is ___ by the Nation’s government. (ADMINISTRATION)",["administered"]],
+["Running a casino can be very ___. (PROFIT)",["profitable"]],
+["The ___ level is high. (EMPLOY)",["unemployment"]],
+["Delegates are elected by ___ Navajo voters. (REGISTER)",["registered"]]]},
+{type:"mcq",title:"E. Phrases & meaning",gr:"Διάλεξε τη σωστή απάντηση.",items:[
+["“To give in to pressure” means to …",["finally agree to something you did not want","resist strongly","put pressure on others"],0],
+["“In return” means …",["going back home","as an exchange","again"],1],
+["“Subsistence farming” produces …",["just enough food for the family","food for export","only expensive products"],0],
+["“To preside over” a meeting means to …",["be in charge of it","miss it","be late for it"],0],
+["A synonym of “lucrative” is …",["profitable","dangerous","illegal"],0],
+["“When the council is in session” means when it is …",["on holiday","meeting","being elected"],1],
+["The three branches of government are executive, legislative and …",["judicial","federal","tribal"],0]]}],
+vocab:[
+["pass (a law / an act)","v.","ψηφίζω (νόμο)","the … Act was passed"],
+["mark","v.","σηματοδοτώ","marking the culmination"],
+["culmination","n.","κορύφωση, τελικό αποτέλεσμα","the culmination of 15 years of policy changes"],
+["policy","n.","πολιτική","policy changes"],
+["activism","n.","ακτιβισμός","Indian activism"],
+["Civil Rights Movement","n.","Κίνημα για τα Πολιτικά Δικαιώματα","the Civil Rights Movement"],
+["recognize","v.","αναγνωρίζω","the Act recognized the need"],
+["self-determination","n.","αυτοδιάθεση","the need … for self-determination"],
+["federally recognized","adj.","αναγνωρισμένος σε ομοσπονδιακό επίπεδο","562 federally recognized tribal governments"],
+["tribe / tribal","n. / adj.","φυλή / φυλετικός","tribal governments"],
+["possess","v.","κατέχω, έχω","These tribes possess the right"],
+["enforce","v.","επιβάλλω, εφαρμόζω (νόμο)","to enforce laws"],
+["civil / criminal (law)","adj.","αστικό / ποινικό (δίκαιο)","laws both civil and criminal"],
+["establish","v.","θεσπίζω, καθιερώνω","to establish requirements"],
+["requirement","n.","προϋπόθεση, απαίτηση","requirements for membership"],
+["membership","n.","ιδιότητα μέλους","requirements for membership"],
+["license","v.","χορηγώ άδεια","to license and regulate activities"],
+["regulate","v.","ρυθμίζω, ελέγχω","to license and regulate activities"],
+["zone","v.","χωροθετώ, ορίζω ζώνες","to zone and to exclude"],
+["exclude","v.","αποκλείω","to exclude persons from tribal territories"],
+["territory","n.","έδαφος, περιοχή","tribal territories"],
+["limitation","n.","περιορισμός","Limitations on tribal powers"],
+["applicable","adj.","που ισχύει, εφαρμόσιμος","the same limitations applicable to states"],
+["engage in","phr. v.","ασχολούμαι με, συμμετέχω σε","engage in foreign relations"],
+["foreign relations","n.","εξωτερικές σχέσεις","engage in foreign relations"],
+["population","n.","πληθυσμός","the largest tribe … by population"],
+["maintain","v.","διατηρώ","maintains five Indian Agencies"],
+["reservation","n.","καταυλισμός / περιοχή ιθαγενών","the Navajo Indian Reservation"],
+["provincial","adj.","επαρχιακός","similar to provincial entities"],
+["entity","n.","οντότητα","provincial entities"],
+["county","n.","κομητεία","similar to counties"],
+["essentially","adv.","ουσιαστικά","which essentially each consist of …"],
+["consist of","phr. v.","αποτελούμαι από","each consist of a local community"],
+["branch","n.","κλάδος (εξουσίας)","a three-branch system"],
+["executive / legislative / judicial","adj.","εκτελεστική / νομοθετική / δικαστική","Executive, Legislative, and Judicial"],
+["make up","phr. v.","αποτελώ, συνθέτω","the 110 chapters that make up the Navajo Nation"],
+["delegate","n.","αντιπρόσωπος","members are delegates"],
+["elect","v.","εκλέγω","elected every four years"],
+["registered voter","n.","εγγεγραμμένος ψηφοφόρος","registered Navajo voters"],
+["preside over","phr. v.","προεδρεύω","It is presided over by a Speaker"],
+["respective","adj.","αντίστοιχος","their respective chapters"],
+["in session","phr.","σε σύνοδο, συνεδριάζει","when council is in session"],
+["pertain to","phr. v.","αφορώ, σχετίζομαι με","issues pertaining to their chapters"],
+["legislation","n.","νομοθεσία","new legislation is passed"],
+["Secretary of the Interior","n.","Υπουργός Εσωτερικών (ΗΠΑ)","the U.S. Secretary of the Interior"],
+["certify","v.","πιστοποιώ, εγκρίνω","in order to certify mineral leases"],
+["mineral lease","n.","μίσθωση (δικαίωμα εξόρυξης) ορυκτών","mineral leases"],
+["head","v.","ηγούμαι","was headed by Chee Dodge"],
+["give in to","phr. v.","υποχωρώ σε","gave in to U.S. pressure"],
+["grant","v.","παραχωρώ","to grant the oil companies use of the land"],
+["in return","phr.","σε αντάλλαγμα","In return, the Navajo Nation was promised …"],
+["subsistence farming","n.","γεωργία αυτοσυντήρησης","subsistence farming"],
+["grazing","n.","βοσκή","sheep grazing"],
+["ownership","n.","ιδιοκτησία","private land ownership"],
+["in common","phr.","από κοινού","owned in common"],
+["administer","v.","διαχειρίζομαι, διοικώ","administered by the Nation’s government"],
+["customary","adj.","συνηθισμένος, εθιμικός","customary land users"],
+["endeavor","n.","προσπάθεια, δραστηριότητα","traditional endeavors"],
+["cattle herding","n.","κτηνοτροφία (βοοειδών)","sheep and cattle herding"],
+["weaving","n.","ύφανση","weaving, jewelry making"],
+["mining","n.","εξόρυξη","coal and uranium mining"],
+["lucrative","adj.","επικερδής","lucrative casinos"],
+["civil service","n.","δημόσια διοίκηση","civil service and administrative jobs"],
+["unemployment","n.","ανεργία","The unemployment level is high"],
+["fluctuate","v.","κυμαίνομαι","fluctuating between 40 and 45 percent"]]},
+
+/* ================= TEXT 3 ================= */
+{id:"t3",title:"NAFTA and The Mexican Farmers",img:"assets/u2-corn.jpg",short:"NAFTA",
+context:"While browsing at your college library, you see this article in a political magazine. It catches your interest, so you read it. After reading it, answer the questions that follow.",
+lines:[
+"¶On January 31, 2003, nearly a hundred thousand Mexican farmers and supporters from unions, uni-",
+"versities, and civil society groups marched in the streets calling for renegotiation of the North Ameri-",
+"can Free Trade Agreement, or NAFTA chapter on agriculture. The Mexican and U.S. governments",
+"refused to consider changing the terms of the agreement. §1",
+"¶However, the movement represented the first time that farmers viewed their *plight* as part of an in-",
+"ternational system - specifically economic integration under NAFTA - and not just in the context of",
+"Mexican farm policies. As a result, some of the fundamental myths of the free trade model are being",
+"questioned as never before in Mexico. The first is the myth that free trade exists at all. Three major",
+"factors - subsidies, financing, and oligopolies - have created distorted market conditions made-to-order",
+"for the world’s most powerful U.S.-based transnational corporations and rigged against the small",
+"farmer. §2",
+"¶The first factor comes in the form of U.S. government subsidies paid to U.S. farmers. The federal",
+"government subsidies now make up 40% of the U.S. net farm income. Though they seemingly serve to",
+"keep family farmers afloat, actually the billions in subsidies flow disproportionately to corporate farm-",
+"ers. An analysis reveals that in 2001 corn cost an average of $3.41 a bushel to produce in the United",
+"States and sold on the international market for $2.28 a bushel. There’s a name for this: dumping; and it",
+"is supposedly prohibited under both NAFTA and World Trade Organization rules. According to the",
+"above calculations, the over five million tons of U.S. corn sold in Mexico in 2001 carried a dumping",
+"margin of 25%. Analyses from past years show dumping margins of over 30%. What does this do to",
+"the Mexican market? Dumped U.S. surpluses erode producer prices; the value of Mexican corn",
+"dropped 64% between 1985 and 1999. They also leave Mexican producers without a market. Mexican",
+"farmers cannot and should not be forced to compete with grains sold at less than U.S. production",
+"costs. They lack the credit, economy of scale, fertilizers, chemical weed and pest controls, farm equip-",
+"ment, and most importantly, significant government supports that would allow them to compete. §3",
+"¶In light of all this adversity, planners predicted that the majority of Mexican corn farmers would have",
+"left the sector by now. They were wrong. Figures show that national corn production has actually",
+"grown. Three million Mexican farmers throughout the country still grow basic grains. How, and even",
+"more importantly, why, do these farmers *persevere* against the global market odds? The answer is",
+"that in spite of all that’s been said, the Mexican farming sector is indeed highly subsidized, though not",
+"by a government concerned with assuring the viability of agriculture and the security of the country’s",
+"food supply. Mexican farmers themselves subsidize national corn production through a combination of",
+"unpaid family labor, small-scale commercial activities, and, especially, the $24 billion dollars sent home",
+"each year by Mexicans working in the United States. This money sustains agricultural activities that",
+"have been deemed nonviable by the international market but that still serve multiple purposes: family",
+"consumption, cultural survival, and ecological conservation. It allows them to maintain the campesino",
+"identity and community belonging that continue to define them in economic exile. The combination of",
+"these personal subsidies and subsistence tenacity accounts for the otherwise unaccountable growth in",
+"corn production in Mexico which reflects a deep cultural resistance to the dislocation and denial inher-",
+"ent in the free trade model. §4",
+""],
+pre:[
+{type:"match",title:"A. Match the words with their meanings",gr:"Αντιστοίχισε κάθε λέξη με τον ορισμό της.",items:[
+["plight","a difficult or dangerous situation"],
+["subsidy","money a government pays to help a business or keep prices low"],
+["rigged","arranged dishonestly so that one side wins"],
+["afloat","(of a business) having enough money to survive"],
+["surplus","an amount that is more than what is needed"],
+["erode","to gradually reduce or destroy"],
+["persevere","to keep trying and not give up"],
+["tenacity","the quality of being determined and not giving up"]]},
+{type:"gap",title:"B. Complete the sentences with a word from the box",gr:"Συμπλήρωσε τα κενά με τις λέξεις του πλαισίου.",
+bank:["marched","prohibited","agreement","compete","adversity","predicted","sector","refused"],items:[
+["Thousands of students ___ through the city centre to protest.","marched"],
+["Smoking is ___ in all public buildings.","prohibited"],
+["After hours of talks, the two sides finally reached an ___.","agreement"],
+["Small shops find it hard to ___ with big supermarkets.","compete"],
+["She showed great courage in the face of ___.","adversity"],
+["Weather experts have ___ heavy rain for the weekend.","predicted"],
+["Tourism is the most important ___ of the Greek economy.","sector"],
+["He ___ to answer the journalist’s questions.","refused"]]},
+{type:"discuss",title:"C. Talk about it",gr:"Συζήτησε χρησιμοποιώντας τις νέες λέξεις.",items:[
+"Is <b>free trade</b> good for small farmers? Why / why not?",
+"Do farmers in your country receive <b>subsidies</b>? Is that fair?",
+"Why do you think Mexican farmers <b>persevere</b> even when farming is not profitable?",
+"How important is it for a country to produce its own <b>food supply</b>?"]}],
+questions:[
+["The march in 2003 …",["did not result in policy change","was small and not very organized","changed the Mexican government’s views","was made up entirely of farmers"],0,"Γρ. 3–4: «The Mexican and U.S. governments refused to consider changing the terms of the agreement». Το (d) είναι λάθος: συμμετείχαν και συνδικάτα, πανεπιστήμια κ.ά."],
+["Which of the following is closest in meaning to the word <i>plight</i> in <b>line 5</b>?",["demise","resistance","difficult situation","financial hardship"],2,"plight = δύσκολη, άσχημη κατάσταση. Το (d) είναι πιο στενό από τη σημασία της λέξης."],
+["U.S. farmers are able to sell their grain so cheaply because …",["they can produce it very cheaply","they work more efficiently than other farmers","the U.S. government gives them money","they are committed to helping the poor"],2,"Γρ. 12–16: οι ομοσπονδιακές επιδοτήσεις είναι το 40% του εισοδήματός τους, γι’ αυτό πουλάνε κάτω από το κόστος ($3.41 → $2.28)."],
+["At which of the highlighted, numbered points in the text should the following sentence be inserted?<br><i>“Indeed, the United Nations Development Program estimates that, worldwide, U.S farm subsidies cost poor countries about $50 billion a year in lost agricultural exports.”</i>",["§1","§2","§3","§4"],2,"Η πρόταση επιβεβαιώνει («Indeed») τη ζημιά που κάνουν οι αμερικανικές επιδοτήσεις, που μόλις περιγράφηκε στην παράγραφο για το dumping → §3."],
+["Who is subsidizing the Mexican farms?",["No one; they are not subsidized.","The Mexican government subsidizes them.","The American government subsidizes them.","The farmers themselves are subsidizing them."],3,"Γρ. 31: «Mexican farmers themselves subsidize national corn production», με απλήρωτη οικογενειακή εργασία και χρήματα από μετανάστες."],
+["Which of the following is closest in meaning to the word <i>persevere</i> in <b>line 28</b>?",["fail to succeed","fight and strive","manage to become victorious","keep trying and not give up"],3,"persevere = επιμένω, συνεχίζω χωρίς να τα παρατάω."],
+["It can be inferred that the Mexican farmers …",["are proud of their cultural identities","would prefer to work in the U.S.","actually have fairly easy lives","feel defeated"],0,"Γρ. 35–38: κρατούν την ταυτότητα του campesino και δείχνουν «a deep cultural resistance» → είναι περήφανοι για την κουλτούρα τους."],
+["What is, most likely, the author’s attitude about U.S. trade policy?",["She supports it.","She thinks that it is wrong.","She is questioning its successfulness.","She admires its effectiveness."],1,"Λέξεις όπως «rigged against the small farmer», «dumping», «should not be forced to compete» δείχνουν ότι τη θεωρεί λάθος και άδικη."],
+["It can be inferred from the passage that …",["Mexican agriculture is not likely to survive.","growing corn in Mexico can still be financially profitable.","the U.S. government will probably change its policies.","Mexican farmers will not easily give up their way of life."],3,"Παρά τις δυσκολίες η παραγωγή αυξήθηκε. Η «subsistence tenacity» και η «cultural resistance» δείχνουν ότι δεν θα εγκαταλείψουν εύκολα."],
+["What would be the best title for this article?",["How Small Farmers Overcame NAFTA","NAFTA: the Myth of Free Trade","Free Trade Can Be Harmful","Dangers of Illegal Dumping"],1,"Το κεντρικό θέμα είναι ότι «the fundamental myths of the free trade model are being questioned» και ότι «free trade» στην πραγματικότητα δεν υπάρχει. Το (a) είναι υπερβολή, το (d) πολύ στενό."]],
+post:[
+{type:"type",title:"D. Word formation",gr:"Γράψε τη σωστή μορφή της λέξης σε κεφαλαία.",items:[
+["Farmers called for the ___ of the agreement. (NEGOTIATE)",["renegotiation"]],
+["Economic ___ under NAFTA affected Mexican farmers. (INTEGRATE)",["integration"]],
+["Subsidies flow ___ to corporate farmers. (PROPORTION)",["disproportionately"]],
+["Dumping is ___ prohibited under WTO rules. (SUPPOSE)",["supposedly"]],
+["The government is not concerned with the ___ of agriculture. (VIABLE)",["viability"]],
+["This explains the otherwise ___ growth in corn production. (ACCOUNT)",["unaccountable"]],
+["The farmers show a deep cultural ___. (RESIST)",["resistance"]],
+["Farming also serves the purpose of ___ conservation. (ECOLOGY)",["ecological"]]]},
+{type:"mcq",title:"E. Phrases & meaning",gr:"Διάλεξε τη σωστή απάντηση.",items:[
+["“In light of all this adversity” means …",["considering all these difficulties","despite the bright light","after the difficulties ended"],0],
+["To persevere “against the odds” means to continue …",["despite great difficulties","because it is easy","for no reason"],0],
+["Market conditions “made-to-order” for big corporations are …",["designed especially to suit them","ordered online","unfair to them"],0],
+["“Dumping” means …",["throwing rubbish away","selling goods abroad below their production cost","buying too much"],1],
+["“To account for” something means to …",["count it","explain it","pay for it"],1],
+["A synonym of “plight” is …",["predicament","flight","promise"],0],
+["“In spite of” means …",["despite","because of","instead of"],0]]}],
+vocab:[
+["supporter","n.","υποστηρικτής","farmers and supporters"],
+["union","n.","συνδικάτο","from unions, universities …"],
+["civil society","n.","κοινωνία των πολιτών","civil society groups"],
+["march","v.","κάνω πορεία","marched in the streets"],
+["call for","phr. v.","ζητώ, απαιτώ","calling for renegotiation"],
+["renegotiation","n.","επαναδιαπραγμάτευση","renegotiation of the North American Free Trade Agreement"],
+["free trade agreement","n.","συμφωνία ελεύθερου εμπορίου","the North American Free Trade Agreement"],
+["refuse","v.","αρνούμαι","refused to consider changing"],
+["terms","n.","όροι","the terms of the agreement"],
+["movement","n.","κίνημα","the movement represented the first time"],
+["plight","n.","δεινή θέση, δύσκολη κατάσταση","viewed their plight"],
+["integration","n.","ενοποίηση, ένταξη","economic integration under NAFTA"],
+["context","n.","πλαίσιο","in the context of Mexican farm policies"],
+["myth","n.","μύθος","the fundamental myths of the free trade model"],
+["question","v.","αμφισβητώ","are being questioned as never before"],
+["subsidy / subsidize","n. / v.","επιδότηση / επιδοτώ","subsidies, financing, and oligopolies"],
+["financing","n.","χρηματοδότηση","subsidies, financing …"],
+["oligopoly","n.","ολιγοπώλιο","and oligopolies"],
+["distorted","adj.","στρεβλός, παραμορφωμένος","distorted market conditions"],
+["made-to-order","adj.","κατά παραγγελία, φτιαγμένος στα μέτρα","made-to-order for … corporations"],
+["transnational corporation","n.","πολυεθνική εταιρεία","U.S.-based transnational corporations"],
+["rigged (against)","adj.","στημένος (εις βάρος)","rigged against the small farmer"],
+["federal","adj.","ομοσπονδιακός","The federal government subsidies"],
+["net income","n.","καθαρό εισόδημα","the U.S. net farm income"],
+["seemingly","adv.","φαινομενικά","they seemingly serve to …"],
+["keep afloat","phr.","κρατώ «στη ζωή» (οικονομικά)","keep family farmers afloat"],
+["disproportionately","adv.","δυσανάλογα","flow disproportionately to corporate farmers"],
+["reveal","v.","αποκαλύπτω","An analysis reveals that …"],
+["bushel","n.","μπούσελ (μονάδα όγκου σιτηρών)","$3.41 a bushel"],
+["dumping","n.","ντάμπινγκ (πώληση κάτω του κόστους)","There’s a name for this: dumping"],
+["supposedly","adv.","υποτίθεται","is supposedly prohibited"],
+["prohibit","v.","απαγορεύω","prohibited under … rules"],
+["margin","n.","περιθώριο","a dumping margin of 25%"],
+["surplus","n.","πλεόνασμα","Dumped U.S. surpluses"],
+["erode","v.","διαβρώνω, μειώνω σταδιακά","erode producer prices"],
+["compete","v.","ανταγωνίζομαι","be forced to compete"],
+["grain","n.","σιτηρά","grains sold at less than U.S. production costs"],
+["credit","n.","πίστωση, δάνεια","They lack the credit"],
+["economy of scale","n.","οικονομία κλίμακας","economy of scale"],
+["fertilizer","n.","λίπασμα","fertilizers"],
+["weed / pest control","n.","ζιζανιοκτονία / καταπολέμηση παρασίτων","chemical weed and pest controls"],
+["in light of","phr.","λαμβάνοντας υπόψη","In light of all this adversity"],
+["adversity","n.","αντιξοότητα","all this adversity"],
+["predict","v.","προβλέπω","planners predicted that …"],
+["sector","n.","τομέας","would have left the sector"],
+["figures","n.","αριθμοί, στοιχεία","Figures show that …"],
+["persevere","v.","επιμένω, δεν τα παρατάω","do these farmers persevere"],
+["odds","n.","πιθανότητες, αντιξοότητες","against the global market odds"],
+["in spite of","prep.","παρά","in spite of all that’s been said"],
+["viability","n.","βιωσιμότητα","assuring the viability of agriculture"],
+["food supply","n.","επισιτισμός, τροφοδοσία","the security of the country’s food supply"],
+["unpaid labor","n.","απλήρωτη εργασία","unpaid family labor"],
+["sustain","v.","συντηρώ","This money sustains agricultural activities"],
+["deem","v.","κρίνω, θεωρώ","have been deemed nonviable"],
+["nonviable","adj.","μη βιώσιμος","deemed nonviable"],
+["conservation","n.","διατήρηση, προστασία","ecological conservation"],
+["campesino","n.","αγρότης, χωρικός (Λατ. Αμερική)","the campesino identity"],
+["exile","n.","εξορία","in economic exile"],
+["tenacity","n.","επιμονή, εμμονή","subsistence tenacity"],
+["account for","phr. v.","εξηγώ","accounts for the … growth"],
+["unaccountable","adj.","ανεξήγητος","the otherwise unaccountable growth"],
+["resistance","n.","αντίσταση","a deep cultural resistance"],
+["dislocation","n.","εκτοπισμός, αναστάτωση","the dislocation and denial"],
+["inherent (in)","adj.","εγγενής","inherent in the free trade model"]]},
+
+/* ================= TEXT 4 ================= */
+{id:"t4",title:"The Fat Tax",img:"assets/u2-fattax.jpg",short:"The Fat Tax",
+context:"Your friend has written the following essay for his political science class. He’s asked you to read it and give him your opinion. Read the essay and then answer the questions that follow.",
+lines:[
+"¶Economists have long recognized the arguments for imposing special taxes on goods and services",
+"whose prices do not reflect the true social cost of their consumption. Environmental taxes are an obvi-",
+"ous example. There is also a case for duties on cigarettes, alcohol and gambling. All three habits lead to",
+"higher medical costs. In theory governments can make up these costs with a tax that adjusts the prices",
+"people pay to puff, booze or punt. Support for another such tax, on junk food, is now spreading, espe-",
+"cially in America. Congress is considering a tax on sugary drinks to help pay for the planned expansion",
+"of health-care coverage. Some analysts would like to see even broader duties on junk food. The Urban",
+"Institute, a think-tank in Washington DC, has proposed a 10% tax on “fattening food of little nutritional",
+"value” that, it claimed, would raise $500 billion over ten years. Such a tax might even encourage",
+"consumers to live healthier lives. But is it a good idea?",
+"¶The logic for a tax on fattening food may seem obvious. About one-third of Americans are obese, up",
+"from 15% in 1980. Fat people are more prone to heart disease, diabetes, bone disorders and cancer.",
+"An obese person’s annual medical costs are more than $700 greater than those of a comparable thin",
+"person. These costs are not all borne by the obese. When health-care costs are shared, through",
+"Medicare, or insurance premiums, obesity becomes a burden for everyone.",
+"¶But would a fat tax affect behavior? The answer is probably yes. Numerous studies have shown a re-",
+"lationship between the price of food, especially junk food, and body weight. As fast food has become",
+"relatively cheaper, so people have become fatter. A new paper from the RAND Corporation, another",
+"think-tank, suggests that taxing calories could have a sizeable, if gradual, effect on people’s weight. The",
+"study looks at a large group of Americans aged over 50, to see whether food-price changes affect",
+"body-mass index (BMI). A person’s BMI turns out to be hard to shift in the short term. A 10% increase",
+"in the price of fattening food was associated with a small decline in BMI within two years. But the ef-",
+"fects are greater over the longer term, with a fall in BMI of one to two points over 20 to 30 years. Such",
+"a drop would eliminate about half of the observed increase in obesity in America since 1980.",
+"¶Even so, the idea of tackling obesity via the tax system has some serious flaws. First, there is the",
+"question of what to tax. Sugary drinks may not be nutritious, but hamburgers contain some protein",
+"along with their fat. More important, junk food is not the direct source of the medical costs that arise",
+"from obesity. Unlike smoking, or excessive gambling and drinking, eating junk food does not directly",
+"impair the well-being of anyone else. And because obesity is determined by lack of exercise as well as",
+"calorie intake, its ultimate relationship with health costs is more tenuous than that of, say, smoking. It is",
+"possible to eat a lot of fatty food, exercise frequently and not generate any health costs.",
+"¶Even if we *deem* these problems minor, a junk-food tax may have less positive impact than its advo-",
+"cates expect. New studies on the effect of cigarette and alcohol sin taxes suggest heavy users are less",
+"influenced by price changes than others. The biggest consumers of fattening food may prove similarly",
+"*resilient* to price increases, so a fat tax may do little to improve health, at least for today’s junk-food",
+"addicts. If these same consumers are poorer on average, it would probably just make their lives worse.",
+"One reason for this is that some poorer neighborhoods may have little fresh food on sale. If junk is all",
+"there is, putting up its price will reduce real incomes and make little difference to eating habits and health.",
+"¶In conclusion, like the foods they aim at, fat taxes look appetizing but can have nasty effects."],
+pre:[
+{type:"match",title:"A. Match the words with their meanings",gr:"Αντιστοίχισε κάθε λέξη με τον ορισμό της.",items:[
+["impose","to officially force a tax or a rule on people"],
+["prone to","likely to suffer from something"],
+["burden","something difficult that you have to deal with or pay for"],
+["tackle","to deal with a problem"],
+["flaw","a weakness or a mistake"],
+["impair","to damage or weaken"],
+["deem","to consider or judge"],
+["resilient","not easily affected; able to recover quickly"]]},
+{type:"gap",title:"B. Complete the sentences with a word from the box",gr:"Συμπλήρωσε τα κενά με τις λέξεις του πλαισίου.",
+bank:["junk food","nutritious","obese","fattening","habits","decline","excessive","eliminate"],items:[
+["Chips, burgers and sweets are all examples of ___.","junk food"],
+["Fresh vegetables are cheap and very ___.","nutritious"],
+["The doctor said the man was ___ and needed to lose 30 kilos.","obese"],
+["Cakes and fizzy drinks are very ___.","fattening"],
+["Biting your nails is one of the worst ___.","habits"],
+["There has been a ___ in the number of people who smoke.","decline"],
+["___ use of social media can affect your sleep.","excessive"],
+["The new vaccine could ___ the disease completely.","eliminate"]]},
+{type:"discuss",title:"C. Talk about it",gr:"Συζήτησε χρησιμοποιώντας τις νέες λέξεις.",items:[
+"Should governments <b>impose</b> taxes on unhealthy food? Why / why not?",
+"Is <b>junk food</b> cheaper than healthy food in your country?",
+"Who should pay the medical costs of <b>obesity</b>: the individual or everyone?",
+"What would change people’s eating <b>habits</b> more: higher prices or education?"]}],
+questions:[
+["According to the first paragraph, we can infer that …",["raising taxes never solves social problems","a ‘fat tax’ is not a completely new concept","there is little rational support for a ‘fat tax’","people are now looking at taxes in a completely new light"],1,"Γρ. 1–5: οι οικονομολόγοι «have long recognized» τους ειδικούς φόρους (περιβάλλον, τσιγάρα, αλκοόλ, τζόγος). Ο φόρος στο junk food είναι «another such tax», άρα όχι εντελώς νέα ιδέα."],
+["What is the expected relationship between a fat tax and BMI?",["It will cause an immediate drop in BMI.","It may cause BMI to increase.","It should cause BMI to drop in the long term.","There is no reason to think they are related."],2,"Γρ. 21–23: ο BMI «is hard to shift in the short term … But the effects are greater over the longer term»."],
+["What is the best definition of ‘fat tax’ based on the reading?",["Health insurance premiums are calculated using BMI.","Any unhealthy items such as cigarettes, alcohol and sodas are taxed.","Fatty foods are taxed to improve health and support healthcare.","Any heavy tax imposed by the government to fund health reform."],2,"Φόρος στα παχυντικά τρόφιμα που θα πλήρωνε την υγειονομική κάλυψη (γρ. 6–7) και θα ενθάρρυνε μια πιο υγιεινή ζωή (γρ. 9–10)."],
+["What is NOT a potential problem with trying to use taxes to fight obesity?",["Someone must decide what to tax.","Obese people do not directly harm other people, so it is hard to justify.","Fatty foods are not the only cause of obesity.","People who exercise are usually not obese."],3,"Τα (a), (b), (c) αναφέρονται στην παράγραφο με τα «serious flaws». Το (d) δεν αναφέρεται ως πρόβλημα του φόρου."],
+["Which word is closest in meaning to the word <i>deem</i> in <b>line 32</b>?",["pronounce","imagine","label","judge"],3,"deem = κρίνω, θεωρώ. «Even if we deem these problems minor» = ακόμα κι αν τα κρίνουμε ασήμαντα."],
+["Which phrase is closest in meaning to the phrase <i>resilient to</i> in <b>line 35</b>?",["greatly improved by","damaged by","not easily affected by","sensitive to"],2,"Οι μεγάλοι καταναλωτές «are less influenced by price changes» → δεν επηρεάζονται εύκολα από τις αυξήσεις τιμών."],
+["Which word in the passage best characterizes the kind of tax on various unhealthy behaviors?",["fat","junk-food","sin","tenuous"],2,"Γρ. 33: «cigarette and alcohol sin taxes». sin tax = φόρος σε «αμαρτωλές», ανθυγιεινές συνήθειες γενικά."],
+["Why might a tax on junk food be particularly bad for poor people?",["If it costs more they won’t be able to afford it.","They prefer the taste of junk food.","They become obese for other reasons.","Some have no access to healthy food."],3,"Γρ. 37–38: «some poorer neighborhoods may have little fresh food on sale. If junk is all there is …»."],
+["Which of the following would be the best title for this essay?",["How to Make the Fat Tax Work","Fat Tax; as Healthy as it Sounds?","The History of Taxing for Health","What is the Best Way to Fund Healthcare?"],1,"Το δοκίμιο εξετάζει αν ο φόρος είναι τόσο καλός όσο φαίνεται («look appetizing but can have nasty effects»)."],
+["Which of the following statements best characterizes the author’s general opinion about a ‘fat tax’?",["It would solve most of society’s problems with healthcare.","It seems like a good idea but it might not work.","It would be pointless and unethical.","It would certainly not encourage people to lose weight."],1,"Τελευταία πρόταση: «fat taxes look appetizing but can have nasty effects» → φαίνεται καλή ιδέα, αλλά μπορεί να μη λειτουργήσει."]],
+post:[
+{type:"type",title:"D. Word formation",gr:"Γράψε τη σωστή μορφή της λέξης σε κεφαλαία.",items:[
+["About one-third of Americans suffer from ___. (OBESE)",["obesity"]],
+["Junk food has little ___ value. (NUTRITION)",["nutritional"]],
+["Taxing calories could have a ___ effect on weight. (SIZE)",["sizeable","sizable"]],
+["Studies show a ___ between food prices and body weight. (RELATE)",["relationship"]],
+["Eating junk food is not directly ___ to other people. (HARM)",["harmful"]],
+["Unlike smoking or ___ drinking … (EXCESS)",["excessive"]],
+["Today’s junk-food ___ may not change their habits. (ADDICTED)",["addicts"]],
+["Fat taxes look ___ but can have nasty effects. (APPETITE)",["appetizing","appetising"]]]},
+{type:"mcq",title:"E. Phrases & meaning",gr:"Διάλεξε τη σωστή απάντηση.",items:[
+["“There is a case for” a tax means there are …",["good reasons for it","boxes for it","laws against it"],0],
+["“To puff, booze or punt” means to …",["smoke, drink alcohol or gamble","run, swim or cycle","eat, sleep or work"],0],
+["A “think-tank” is …",["a water container","a group of experts who study problems and give advice","a military vehicle"],1],
+["A “sin tax” is a tax on …",["churches","cigarettes, alcohol and other unhealthy habits","income"],1],
+["“Prone to heart disease” means …",["likely to get heart disease","cured of heart disease","worried about heart disease"],0],
+["“These costs are not all borne by the obese” means they are not all …",["paid for by the obese","born to obese parents","boring for the obese"],0],
+["The opposite of “appetizing” is …",["delicious","unappetizing","tasty"],1]]}],
+vocab:[
+["economist","n.","οικονομολόγος","Economists have long recognized …"],
+["impose","v.","επιβάλλω","imposing special taxes"],
+["reflect","v.","αντικατοπτρίζω","prices do not reflect the true social cost"],
+["social cost","n.","κοινωνικό κόστος","the true social cost of their consumption"],
+["obvious","adj.","προφανής","an obvious example"],
+["there is a case for","phr.","υπάρχουν επιχειρήματα υπέρ","There is also a case for duties"],
+["duty","n.","δασμός, φόρος","duties on cigarettes, alcohol and gambling"],
+["gambling","n.","τζόγος","cigarettes, alcohol and gambling"],
+["habit","n.","συνήθεια","All three habits"],
+["make up (for)","phr. v.","αναπληρώνω, καλύπτω","make up these costs"],
+["adjust","v.","προσαρμόζω","a tax that adjusts the prices"],
+["puff / booze / punt","v. (informal)","καπνίζω / πίνω / τζογάρω","to puff, booze or punt"],
+["junk food","n.","πρόχειρο, ανθυγιεινό φαγητό","another such tax, on junk food"],
+["spread","v.","εξαπλώνομαι","is now spreading"],
+["sugary","adj.","ζαχαρούχος","a tax on sugary drinks"],
+["expansion","n.","επέκταση","the planned expansion"],
+["coverage","n.","κάλυψη","health-care coverage"],
+["broad","adj.","ευρύς","even broader duties"],
+["think-tank","n.","δεξαμενή σκέψης, ινστιτούτο μελετών","a think-tank in Washington DC"],
+["propose","v.","προτείνω","has proposed a 10% tax"],
+["fattening","adj.","παχυντικός","fattening food"],
+["nutritional value","n.","θρεπτική αξία","of little nutritional value"],
+["claim","v.","ισχυρίζομαι","it claimed"],
+["raise (money)","v.","συγκεντρώνω (χρήματα)","would raise $500 billion"],
+["encourage","v.","ενθαρρύνω","encourage consumers to live healthier lives"],
+["obese / obesity","adj. / n.","παχύσαρκος / παχυσαρκία","About one-third of Americans are obese"],
+["prone to","adj.","επιρρεπής σε","more prone to heart disease"],
+["diabetes","n.","διαβήτης","heart disease, diabetes"],
+["disorder","n.","διαταραχή, πάθηση","bone disorders"],
+["annual","adj.","ετήσιος","annual medical costs"],
+["comparable","adj.","συγκρίσιμος","a comparable thin person"],
+["borne by (bear)","v.","που επιβαρύνει, βαραίνει","not all borne by the obese"],
+["insurance premium","n.","ασφάλιστρο","insurance premiums"],
+["burden","n.","βάρος, επιβάρυνση","a burden for everyone"],
+["numerous","adj.","πολυάριθμος","Numerous studies"],
+["relatively","adv.","σχετικά","relatively cheaper"],
+["sizeable","adj.","σημαντικός, αρκετά μεγάλος","a sizeable, if gradual, effect"],
+["gradual","adj.","σταδιακός","a sizeable, if gradual, effect"],
+["turn out (to be)","phr. v.","αποδεικνύομαι","turns out to be hard to shift"],
+["shift","v.","μετακινώ, αλλάζω","hard to shift in the short term"],
+["decline","n.","μείωση","a small decline in BMI"],
+["eliminate","v.","εξαλείφω","would eliminate about half"],
+["even so","phr.","ακόμα κι έτσι","Even so, the idea …"],
+["tackle","v.","αντιμετωπίζω","tackling obesity"],
+["via","prep.","μέσω","via the tax system"],
+["flaw","n.","ελάττωμα, αδυναμία","some serious flaws"],
+["nutritious","adj.","θρεπτικός","may not be nutritious"],
+["arise from","phr. v.","προκύπτω από","costs that arise from obesity"],
+["excessive","adj.","υπερβολικός","excessive gambling and drinking"],
+["impair","v.","βλάπτω, εξασθενώ","does not directly impair the well-being"],
+["well-being","n.","ευημερία, καλή υγεία","the well-being of anyone else"],
+["intake","n.","πρόσληψη","calorie intake"],
+["ultimate","adj.","τελικός, απώτερος","its ultimate relationship"],
+["tenuous","adj.","ασθενής, αβέβαιος","more tenuous than that of smoking"],
+["deem","v.","κρίνω, θεωρώ","Even if we deem these problems minor"],
+["minor","adj.","ασήμαντος, μικρός","these problems minor"],
+["impact","n.","επίδραση, αντίκτυπος","less positive impact"],
+["sin tax","n.","φόρος σε «αμαρτωλά» προϊόντα","alcohol sin taxes"],
+["resilient (to)","adj.","ανθεκτικός (σε)","similarly resilient to price increases"],
+["addict","n.","εξαρτημένος","today’s junk-food addicts"],
+["on average","phr.","κατά μέσο όρο","poorer on average"],
+["neighborhood","n.","γειτονιά","poorer neighborhoods"],
+["put up (prices)","phr. v.","αυξάνω (τιμές)","putting up its price"],
+["real income","n.","πραγματικό εισόδημα","will reduce real incomes"],
+["appetizing","adj.","ορεκτικός, δελεαστικός","fat taxes look appetizing"],
+["nasty","adj.","δυσάρεστος","can have nasty effects"]]}
+];
+
+const WRITING={
+topics:[
+"Some countries use money from taxes to provide healthcare for all of their citizens, and other countries do not do this and expect people to provide for themselves in terms of their healthcare by saving their money or taking out private insurance. Some people believe that nationalized health care is slow, and often of lower quality, and other people maintain that it is important for everyone to have free access to doctors and medicines whatever their personal circumstances. Which side of this argument do you agree with? Be sure to support your opinion with reasons and explanations.",
+"In some places like America, where people of different ethnicities have been discriminated against, there are programs called ‘affirmative action’ which require by law that workplaces and places of education have a mix of people of different ethnicities. This may be considered a good thing, which helps fight discrimination, or it could be considered a measure that does more damage than good by focusing on differences rather than equality and ability. What is your opinion about this issue? Be sure to support your opinion with reasons and explanations."],
+vocab:[
+["Topic 1","impose (taxes), coverage, insurance premium, burden, the true social cost, well-being, there is a case for, subsidy, sustain, viability, resources, allocate, efficient, in spite of"],
+["Topic 2","self-determination, recognize, exclude, civil rights, activism, membership, requirement, plight, adversity, persevere, resistance, fundamental, flaw"],
+["Linking words","On the one hand… On the other hand · Even so · In spite of · As a result · Consequently · In light of · In return · In conclusion"]]
+};
+
+/* ---------- STATE ---------- */
+let current=0; const state={};
+function st(k){return state[k]||(state[k]={ans:{},checked:false})}
+
+/* ---------- RENDER ---------- */
+function tabs(){
+  const names=TEXTS.map((t,i)=>`Text ${i+1} · ${t.short}`).concat(["Writing","Unit Corpus"]);
+  document.getElementById('tabs').innerHTML=names.map((n,i)=>`<button class="tab${i===current?' active':''}" onclick="go(${i})">${n}</button>`).join('');
+}
+function go(i){current=i;tabs();render();window.scrollTo({top:document.getElementById('tabs').offsetTop-4});try{localStorage.setItem('cb-u2-tab',i)}catch(e){}}
+
+function lineHTML(raw,n,prev){
+  if(raw==="") return `<span class="pl blank"><i class="n">${n%2===0?n:''}</i>&nbsp;</span>`;
+  let para=raw.startsWith('¶'); let s=esc(para?raw.slice(1):raw);
+  const cont=/[A-Za-z]-\*?$/.test(prev||'');
+  s=s.replace(/\*([^*]+)\*/g,'<span class="hl">$1</span>').replace(/§(\d)/g,'<span class="sec">§$1</span>');
+  s=s.replace(/([A-Za-z])-(<\/span>)?$/,'$1<span class="hy">-</span>$2');
+  return `<span class="pl${para?' para':''}${cont?' cont':''}"><i class="n">${n%2===0?n:''}</i>${s}</span>${/[A-Za-z]-\*?$/.test(raw)?'':' '}`;
+}
+
+function exHTML(ex,key){
+  const s=st(key); let body='';
+  if(ex.type==='match'){
+    const defs=ex.items.map(x=>x[1]).slice().sort();
+    body=ex.items.map((it,i)=>{const a=s.ans[i]||'';const cls=s.checked?(a===it[1]?'ok':'bad'):'';
+      return `<div class="row ${cls}"><div class="word">${i+1}. ${esc(it[0])}</div><div><select onchange="setA('${key}',${i},this.value)"><option value="">— choose —</option>${defs.map(d=>`<option${a===d?' selected':''}>${esc(d)}</option>`).join('')}</select>${s.checked&&a!==it[1]?`<div class="fix">✔ ${esc(it[1])}</div>`:''}</div></div>`}).join('');
+  } else if(ex.type==='gap'){
+    body=`<div class="bank">${ex.bank.map(b=>`<span>${esc(b)}</span>`).join('')}</div>`+ex.items.map((it,i)=>{const a=s.ans[i]||'';const cls=s.checked?(a===it[1]?'ok':'bad'):'';
+      return `<div class="row ${cls}"><div>${i+1}. ${esc(it[0]).replace('___','<b>_____</b>')}</div><div><select onchange="setA('${key}',${i},this.value)"><option value="">— choose —</option>${ex.bank.map(d=>`<option${a===d?' selected':''}>${esc(d)}</option>`).join('')}</select>${s.checked&&a!==it[1]?`<div class="fix">✔ ${esc(it[1])}</div>`:''}</div></div>`}).join('');
+  } else if(ex.type==='type'){
+    body=ex.items.map((it,i)=>{const a=s.ans[i]||'';const good=it[1].includes(norm(a));const cls=s.checked?(good?'ok':'bad'):'';
+      return `<div class="row ${cls}"><div>${i+1}. ${esc(it[0]).replace('___','<b>_____</b>')}</div><div><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(a)}" oninput="state['${key}'].ans[${i}]=this.value" placeholder="type your answer">${s.checked&&!good?`<div class="fix">✔ ${esc(it[1].join(' / '))}</div>`:''}</div></div>`}).join('');
+  } else if(ex.type==='mcq'){
+    body=ex.items.map((it,i)=>{const a=s.ans[i];
+      return `<div class="row full"><div>${i+1}. ${esc(it[0])}</div><div class="opts">${it[1].map((o,j)=>{let c='';if(s.checked){if(j===it[2])c='right';else if(a===j)c='wrong'}else if(a===j)c='sel';return `<button class="opt ${c}" onclick="pick('${key}',${i},${j})">${String.fromCharCode(97+j)}. ${esc(o)}</button>`}).join('')}</div></div>`}).join('');
+  } else if(ex.type==='discuss'){
+    return `<div class="panel"><h4>${ex.title}</h4><p class="instr gr">${ex.gr}</p><ol class="discuss">${ex.items.map(q=>`<li>${q}</li>`).join('')}</ol></div>`;
+  }
+  return `<div class="panel" id="${key}"><h4>${ex.title}</h4><p class="instr gr">${ex.gr}</p>${body}<div class="actions"><button class="action" onclick="check('${key}')">Check answers</button><button class="action sec" onclick="reset('${key}')">Try again</button>${s.checked?`<span class="score">${score(ex,s)} / ${ex.items.length}</span>`:''}</div></div>`;
+}
+function score(ex,s){return ex.items.filter((it,i)=>{const a=s.ans[i];if(ex.type==='type')return it[1].includes(norm(a||''));if(ex.type==='mcq')return a===it[2];return a===it[1]}).length}
+
+function qsHTML(t,ti){
+  const key='q'+ti, s=st(key), start=81+ti*10;
+  const html=t.questions.map((q,i)=>{const a=s.ans[i];
+    return `<article class="tq"><div class="qn">QUESTION ${start+i}</div><h5>${q[0]}</h5><div class="opts">${q[1].map((o,j)=>{let c='';if(s.checked){if(j===q[2])c='right';else if(a===j)c='wrong'}else if(a===j)c='sel';return `<button class="opt ${c}" onclick="pick('${key}',${i},${j})">${String.fromCharCode(97+j)}. ${esc(o)}</button>`}).join('')}</div>${s.checked?`<div class="expl"><b>${a===q[2]?'✔ Σωστό':'✘ Σωστή απάντηση: '+String.fromCharCode(97+q[2])}</b> — ${q[3]}</div>`:''}</article>`}).join('');
+  const sc=t.questions.filter((q,i)=>s.ans[i]===q[2]).length;
+  return `<div id="${key}">${html}<div class="actions"><button class="action" onclick="check('${key}')">Check answers</button><button class="action sec" onclick="reset('${key}')">Try again</button>${s.checked?`<span class="score">Score: ${sc} / 10</span>`:''}</div></div>`;
+}
+
+function corpusTable(rows,showText,id){
+  return `<input type="text" class="search" placeholder="🔎 Search English or Greek…" oninput="filt('${id}',this.value)"><div class="tablewrap"><table id="${id}"><thead><tr><th>#</th><th>WORD / PHRASE</th><th>PART OF SPEECH</th><th>ΕΛΛΗΝΙΚΑ</th><th>IN THE TEXT</th>${showText?'<th>TEXT</th>':''}</tr></thead><tbody>${rows.map((r,i)=>`<tr><td class="t">${i+1}</td><td class="w">${esc(r[0])}</td><td class="p">${esc(r[1])}</td><td class="g">${esc(r[2])}</td><td class="e">“${esc(r[3])}”</td>${showText?`<td class="t">${esc(r[4])}</td>`:''}</tr>`).join('')}</tbody></table></div>`;
+}
+function filt(id,v){v=norm(v);document.querySelectorAll('#'+id+' tbody tr').forEach(tr=>tr.hidden=v&&!norm(tr.textContent).includes(v))}
+
+function render(){
+  const v=document.getElementById('view');
+  if(current<TEXTS.length){
+    const t=TEXTS[current],ti=current;
+    v.innerHTML=`<div class="hero"><img src="${t.img}" alt="${esc(t.title)}"><div class="cap"><div class="eyebrow">TEXT ${ti+1} · QUESTIONS ${81+ti*10}–${90+ti*10}</div><h2>${esc(t.title)}</h2></div></div>
+    <div class="step"><b>STEP 1</b><h3>BEFORE YOU READ</h3></div><p class="muted">Μάθε τις λέξεις-κλειδιά του κειμένου πριν το διαβάσεις.</p>
+    ${t.pre.map((ex,i)=>exHTML(ex,`pre${ti}_${i}`)).join('')}
+    <div class="step"><b>STEP 2</b><h3>READ & ANSWER</h3></div>
+    <div class="ctx">${esc(t.context)}</div>
+    <div class="passage">${t.lines.map((l,i)=>lineHTML(l,i+1,t.lines[i-1])).join('')}</div>
+    ${qsHTML(t,ti)}
+    <div class="step"><b>STEP 3</b><h3>AFTER YOU READ</h3></div><p class="muted">Εμπέδωσε το λεξιλόγιο του κειμένου.</p>
+    ${t.post.map((ex,i)=>exHTML(ex,`post${ti}_${i}`)).join('')}
+    <div class="step"><b>STEP 4</b><h3>VOCABULARY CORPUS</h3></div><p class="muted">${t.vocab.length} λέξεις και φράσεις από το κείμενο, με ελληνική μετάφραση και το σημείο όπου εμφανίζονται.</p>
+    ${corpusTable(t.vocab,false,'vt'+ti)}
+    <div class="actions" style="margin-top:30px">${ti>0?`<button class="action sec" onclick="go(${ti-1})">← Text ${ti}</button>`:''}<button class="action" onclick="go(${ti+1})">${ti<3?'Next: Text '+(ti+2)+' →':'Next: Writing →'}</button></div>`;
+  } else if(current===TEXTS.length){
+    let saved='';try{saved=localStorage.getItem('cb-u2-essay')||''}catch(e){}
+    v.innerHTML=`<div class="step"><b>WRITING</b><h3>THINK ABOUT IT, WRITE ABOUT IT!</h3></div>
+    <p class="muted">Γράψε μια πρωτότυπη έκθεση 35 λεπτών σε <b>ΕΝΑ</b> από τα δύο θέματα (Politics and Social Issues). Χρησιμοποίησε όσες περισσότερες λέξεις από το λεξιλόγιο του Unit 2 μπορείς.</p>
+    ${WRITING.topics.map((tp,i)=>`<div class="topic" id="topic${i}" onclick="document.querySelectorAll('.topic').forEach(x=>x.classList.remove('sel'));this.classList.add('sel')"><b style="color:var(--lime)">TOPIC ${i+1}</b><br>${esc(tp)}</div>`).join('')}
+    <div class="panel"><h4>Useful vocabulary from this unit</h4>${WRITING.vocab.map(r=>`<p><b style="color:var(--pink)">${r[0]}:</b> <span class="muted">${esc(r[1])}</span></p>`).join('')}</div>
+    <textarea id="essay" placeholder="Start writing here…" oninput="essay()">${esc(saved)}</textarea>
+    <div class="actions"><span class="score" id="wc">0 words</span><button class="action" onclick="dl()">Download my composition</button><button class="action sec" onclick="timer()">Start 35-minute timer</button><span class="score" id="clock"></span></div>`;
+    essay();
+  } else {
+    const all=[];TEXTS.forEach((t,i)=>t.vocab.forEach(r=>all.push([r[0],r[1],r[2],r[3],'Text '+(i+1)])));
+    all.sort((a,b)=>a[0].localeCompare(b[0]));
+    v.innerHTML=`<div class="step"><b>CORPUS</b><h3>UNIT 2 · ALL VOCABULARY (A–Z)</h3></div><p class="muted">Όλες οι ${all.length} λέξεις και φράσεις των τεσσάρων κειμένων σε αλφαβητική σειρά. Ψάξε στα αγγλικά ή στα ελληνικά.</p>${corpusTable(all,true,'vall')}`;
+  }
+}
+
+/* ---------- ACTIONS ---------- */
+function setA(k,i,v){st(k).ans[i]=v}
+function pick(k,i,j){const s=st(k);if(s.checked)return;s.ans[i]=j;rerender(k)}
+function check(k){st(k).checked=true;rerender(k)}
+function reset(k){state[k]={ans:{},checked:false};rerender(k)}
+function rerender(k){const y=window.scrollY;render();window.scrollTo(0,y)}
+function essay(){const e=document.getElementById('essay');if(!e)return;const t=e.value.trim();document.getElementById('wc').textContent=(t?t.split(/\s+/).length:0)+' words';try{localStorage.setItem('cb-u2-essay',e.value)}catch(x){}}
+function dl(){const t=document.getElementById('essay').value;if(!t.trim()){alert('Write your composition first.');return}const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain'}));a.download='unit2-composition.txt';a.click()}
+let iv;function timer(){clearInterval(iv);const end=Date.now()+35*60000;const u=()=>{const c=document.getElementById('clock');if(!c){clearInterval(iv);return}const x=Math.max(0,Math.ceil((end-Date.now())/1000));c.textContent='⏱ '+Math.floor(x/60)+':'+String(x%60).padStart(2,'0');if(!x){clearInterval(iv);alert('Time is up!')}};u();iv=setInterval(u,1000)}
+
+try{const s=parseInt(localStorage.getItem('cb-u2-tab'));if(s>=0&&s<=TEXTS.length+1)current=s}catch(e){}
+tabs();render();
+</script></body></html>
